@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317194435) do
+ActiveRecord::Schema.define(:version => 20130317200505) do
+
+  create_table "bookings", :force => true do |t|
+    t.string   "number"
+    t.string   "total"
+    t.string   "pick_up_point"
+    t.string   "customer_name"
+    t.string   "customer_telephone"
+    t.integer  "user_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "members", :force => true do |t|
     t.string   "tat_no"
@@ -34,6 +45,15 @@ ActiveRecord::Schema.define(:version => 20130317194435) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "trip_items", :force => true do |t|
+    t.integer  "booking_id"
+    t.string   "trip_id"
+    t.integer  "price"
+    t.string   "seat_number"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "trips", :force => true do |t|
     t.string   "route"
