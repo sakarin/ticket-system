@@ -2,7 +2,7 @@
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+    <%#= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
     </li>
   <% else %>
     <li>
@@ -24,3 +24,23 @@
     </li>
   <% end %>
 </ul>
+
+<% unless current_user.nil? -%>
+    <ul class="nav pull-right">
+
+      <li class="dropdown" id="nav-user">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <%= current_user.email unless current_user.nil? %>
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="">
+            <%= link_to "แก้ไขบัญชี", edit_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "ออกจากระบบ", destroy_user_session_path, :method => :delete %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+<% end -%>
