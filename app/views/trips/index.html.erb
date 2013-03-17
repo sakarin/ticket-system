@@ -1,0 +1,35 @@
+<h1>Listing trips</h1>
+
+<table>
+  <tr>
+    <th>Route</th>
+    <th>Car standard</th>
+    <th>Seat</th>
+    <th>Price</th>
+    <th>Departure</th>
+    <th>Arrival</th>
+    <th>Company</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @trips.each do |trip| %>
+  <tr>
+    <td><%= trip.route %></td>
+    <td><%= trip.car_standard %></td>
+    <td><%= trip.seat %></td>
+    <td><%= trip.price %></td>
+    <td><%= trip.Departure %></td>
+    <td><%= trip.Arrival %></td>
+    <td><%= trip.company %></td>
+    <td><%= link_to 'Show', trip %></td>
+    <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
+    <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Trip', new_trip_path %>

@@ -1,4 +1,7 @@
 TicketSystem::Application.routes.draw do
+  resources :trips
+
+
   authenticated :user do
     root :to => 'home#index'
   end

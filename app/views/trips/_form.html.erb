@@ -1,0 +1,17 @@
+<%= simple_form_for(@trip) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :route %>
+    <%= f.input :car_standard %>
+    <%= f.input :seat %>
+    <%= f.input :price %>
+    <%= f.input :Departure %>
+    <%= f.input :Arrival %>
+    <%= f.input :company %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
