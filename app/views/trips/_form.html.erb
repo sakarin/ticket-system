@@ -2,12 +2,13 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :route %>
+    <%= f.association :source %>
+    <%= f.association :destination %>
     <%= f.input :car_standard %>
     <%= f.input :seat %>
     <%= f.input :price %>
-    <%= f.input :Departure %>
-    <%= f.input :Arrival %>
+    <%= f.input :departure %>
+    <%= f.input :arrival %>
     <%= f.input :company %>
   </div>
 

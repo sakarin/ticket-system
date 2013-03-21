@@ -11,7 +11,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130317200505) do
+ActiveRecord::Schema.define(:version => 20130318171357) do
+
+  create_table "_trips_old_20130318", :force => true do |t|
+    t.string   "route"
+    t.string   "car_standard"
+    t.integer  "seat"
+    t.integer  "price"
+    t.datetime "Departure"
+    t.datetime "Arrival"
+    t.string   "company"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "_trips_old_20130318_1", :force => true do |t|
+    t.string   "route"
+    t.string   "car_standard"
+    t.integer  "seat"
+    t.integer  "price"
+    t.datetime "departure"
+    t.datetime "arrival"
+    t.string   "company"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "_trips_old_20130318_2", :force => true do |t|
+    t.string   "from"
+    t.string   "car_standard"
+    t.integer  "seat"
+    t.integer  "price"
+    t.datetime "departure"
+    t.datetime "arrival"
+    t.string   "company"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "to"
+  end
 
   create_table "bookings", :force => true do |t|
     t.string   "number"
@@ -22,6 +59,13 @@ ActiveRecord::Schema.define(:version => 20130317200505) do
     t.integer  "user_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "state"
+  end
+
+  create_table "destinations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "members", :force => true do |t|
@@ -46,6 +90,12 @@ ActiveRecord::Schema.define(:version => 20130317200505) do
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
+  create_table "sources", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "trip_items", :force => true do |t|
     t.integer  "booking_id"
     t.string   "trip_id"
@@ -56,15 +106,16 @@ ActiveRecord::Schema.define(:version => 20130317200505) do
   end
 
   create_table "trips", :force => true do |t|
-    t.string   "route"
+    t.integer  "source_id",      :null => false
     t.string   "car_standard"
     t.integer  "seat"
     t.integer  "price"
-    t.datetime "Departure"
-    t.datetime "Arrival"
+    t.datetime "departure"
+    t.datetime "arrival"
     t.string   "company"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "destination_id"
   end
 
   create_table "users", :force => true do |t|

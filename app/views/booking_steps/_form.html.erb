@@ -1,0 +1,12 @@
+<%= simple_form_for @booking, url: wizard_path do |f| %>
+
+    <%= yield f %>
+
+    <div class="actions">
+      <% unless step == :summary  -%>
+        <%= link_to "previous this step", previous_wizard_path %>
+      <% end -%>
+
+      or <%= f.submit "Continue" %>
+    </div>
+<% end %>

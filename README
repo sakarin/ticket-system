@@ -3,3 +3,6 @@ Ticket System
 
 rails g model booking number total pick_up_point customer_name customer_telephone  user_id:integer
 rails g model trip_item booking_id:integer trip_id price:integer seat_number
+
+rails g scaffold source name
+rails g scaffold destination name

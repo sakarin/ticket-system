@@ -1,0 +1,52 @@
+<%= search_form_for @search, url: search_bookings_path, method: :post, :html => {:class => "f-filter"} do |f| %>
+
+    <div class="form-inputs">
+      <div class="control-group">
+        <label class="control-label" for="inputSource"> Source:</label>
+
+        <div class="controls">
+          <%= f.collection_select(:source_id_eq, Source.order(:name), :id, :name, {include_blank: false}) %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="inputSource"> Destination:</label>
+
+        <div class="controls">
+          <%= f.collection_select(:destination_id_eq, Destination.order(:name), :id, :name, {include_blank: false}) %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="inputDeparture"> Departure:</label>
+        <div class="controls">
+            <div id="datetimepicker1" class="input-append date">
+              <input data-format="dd/MM/yyyy" type="text" id="q_departure_gt" name="q[departure_gt]"></input>
+                <span class="add-on">
+                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="inputSource"> Seat:</label>
+
+      <div class="controls">
+        <%= select(:seat, :number, (1..20)) %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            language: 'pt-BR'
+        });
+    });
+</script>

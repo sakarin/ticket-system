@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+  date:
+    picker_format: "dd/mm/yyyy"
+    formats:
+      input: "%d/%m/%Y"
+      default: "%d %b %Y"
+      long: "%A %e %B %Y"

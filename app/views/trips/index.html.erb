@@ -1,6 +1,6 @@
 <h1>Listing trips</h1>
 
-<table>
+<table class="blue">
   <tr>
     <th>Route</th>
     <th>Car standard</th>
@@ -16,12 +16,12 @@
 
 <% @trips.each do |trip| %>
   <tr>
-    <td><%= trip.route %></td>
+    <td><%= "#{trip.source.name} - #{trip.destination.name}" %></td>
     <td><%= trip.car_standard %></td>
     <td><%= trip.seat %></td>
     <td><%= trip.price %></td>
-    <td><%= trip.Departure %></td>
-    <td><%= trip.Arrival %></td>
+    <td><%= trip.departure %></td>
+    <td><%= trip.arrival %></td>
     <td><%= trip.company %></td>
     <td><%= link_to 'Show', trip %></td>
     <td><%= link_to 'Edit', edit_trip_path(trip) %></td>

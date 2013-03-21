@@ -2,12 +2,13 @@
 
 FactoryGirl.define do
   factory :trip do
-    route "MyString"
+    from "MyString"
+    to "MyString"
     car_standard "MyString"
     seat 1
     price 1
-    Departure "2013-03-18 02:44:35"
-    Arrival "2013-03-18 02:44:35"
+    departure "2013-03-18 02:44:35"
+    arrival "2013-03-18 02:44:35"
     company "MyString"
   end
 end
