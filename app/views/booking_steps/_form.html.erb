@@ -1,12 +1,14 @@
+<%= render 'shared/step' %>
+
 <%= simple_form_for @booking, url: wizard_path do |f| %>
 
     <%= yield f %>
 
-    <div class="actions">
-      <% unless step == :summary  -%>
-        <%= link_to "previous this step", previous_wizard_path %>
-      <% end -%>
+    <div class="form-actions">
+      <% unless step == :summary %>
+      <%= f.submit :back, :class => "btn-success floatleft", :name => "btn_back" %>
+      <% end %>
 
-      or <%= f.submit "Continue" %>
+      <%= f.submit :next, :class => "btn-success floatright", :name => "btn_next" %>
     </div>
 <% end %>

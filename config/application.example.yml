@@ -12,4 +12,4 @@ GMAIL_PASSWORD: pump0734
 ADMIN_NAME: Sakarin Ratchapunya
 ADMIN_EMAIL: sakarin.my@gmail.com
 ADMIN_PASSWORD: pump0734
-ROLES: [admin, user, VIP]
+ROLES: [admin, user, vip]

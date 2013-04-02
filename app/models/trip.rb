@@ -1,5 +1,5 @@
 class Trip < ActiveRecord::Base
-  attr_accessible :source_id, :destination_id, :arrival, :departure, :car_standard, :company, :price, :seat
+  attr_accessible :number, :source_id, :destination_id, :arrival, :departure, :car_standard, :company, :price, :seat
 
   has_many :trip_items
   has_many :bookings, :through => :trip_items

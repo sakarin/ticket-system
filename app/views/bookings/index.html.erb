@@ -1,5 +1,9 @@
-<%= search_form_for @search, url: search_bookings_path, method: :post, :html => {:class => "f-filter"} do |f| %>
+<%= render 'shared/step' %>
 
+<h2>Search Trip</h2>
+
+<%= search_form_for @search, url: search_bookings_path, method: :post, :html => {:class => "f-filter"} do |f| %>
+    <div class="well  span8">
     <div class="form-inputs">
       <div class="control-group">
         <label class="control-label" for="inputSource"> Source:</label>
@@ -38,10 +42,13 @@
       </div>
     </div>
 
-    <div class="form-actions">
+    <div class="form-actions no-indent">
       <%= f.button :submit %>
     </div>
+
+        </div>
 <% end %>
+
 
 <script type="text/javascript">
     $(function () {

@@ -1,7 +1,8 @@
 <h1>Listing trips</h1>
+<%= render 'shared/step' %>
 
 <%= search_form_for @search, url: bookings_path, method: :post, :html => {:class => "f-filter"} do |f| %>
-    <%= hidden_field_tag "seat", params[:seat][:number] %>
+
 
     <table class="blue">
       <tr>
@@ -30,6 +31,8 @@
     </table>
     <br/>
 
-    <%= f.button :submit %>
-
+    <div class="form-actions">
+      <%= f.submit :back, :class => "btn-success floatleft", :name => "btn_back" %>
+      <%= f.submit :next, :class => "btn-success floatright", :name => "btn_next" %>
+    </div>
 <% end %>

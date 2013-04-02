@@ -1,6 +1,7 @@
 class CreateTrips < ActiveRecord::Migration
   def change
     create_table :trips do |t|
+      t.string :number
       t.integer :source_id
       t.integer :destination_id
       t.string :car_standard

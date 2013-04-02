@@ -1,0 +1,19 @@
+
+    <ul class="processnav">
+      <li class="selectedtab">
+        <a href=""><span class="num">1</span>  Search</a></li>
+      <li<%== ' class="selectedtab"' if %w(detail media summary).include?(step) %>>
+        <a href=""><span class="num">2</span>  Select Trip</a>
+      </li>
+
+      <li<%== ' class="selectedtab"' if %w(media summary).include?(step) %>>
+        <a href=""><span class="num">3</span>  Customer Detail</a>
+      </li>
+      <% if %w(summary).include?(step) %>
+          <li class="last selectedtab">
+      <% else %>
+          <li class="last">
+      <% end %>
+      <a href=""><span class="num">4</span>  Summary</a>
+      </li>
+    </ul>

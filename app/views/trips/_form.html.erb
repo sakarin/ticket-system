@@ -7,12 +7,22 @@
     <%= f.input :car_standard %>
     <%= f.input :seat %>
     <%= f.input :price %>
+
+
     <%= f.input :departure %>
     <%= f.input :arrival %>
     <%= f.input :company %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "btn btn-success" %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            language: 'pt-BR'
+        });
+    });
+</script>

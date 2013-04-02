@@ -24,6 +24,7 @@ TicketSystem::Application.routes.draw do
   resources :bookings do
     collection do
       match 'search' => 'bookings#search', :via => [:get, :post], :as => :search
+
     end
   end
 

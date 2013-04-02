@@ -1,5 +1,5 @@
 class Booking < ActiveRecord::Base
-  attr_accessible :customer_name, :customer_telephone, :number, :pick_up_point, :total, :user_id
+  attr_accessible :customer_name, :customer_telephone, :number, :pick_up_point, :total, :user_id, :session_seat, :session_trip_id
 
   belongs_to :user
 
@@ -22,7 +22,7 @@ class Booking < ActiveRecord::Base
   scope :pending, with_state('pending')
   scope :complete, with_state('complete')
 
-  validates_presence_of :customer_name, :on => :save
+  validates_presence_of :customer_name, :on => :update
 
 
   # shipment state machine (see http://github.com/pluginaweek/state_machine/tree/master for details)
@@ -33,6 +33,8 @@ class Booking < ActiveRecord::Base
 
     #after_transition :to => 'shipped', :do => :after_ship
   end
+
+
 
   #def can_booking(trip_id)
   #   Trip.find(trip_id)

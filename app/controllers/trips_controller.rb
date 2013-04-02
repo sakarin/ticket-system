@@ -1,13 +1,11 @@
 class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
-  def index
-    @trips = Trip.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @trips }
-    end
+  def index
+    @search = Trip.search(params[:q])
+    @trips = @search.result.paginate(:page => params[:page], :per_page => 10)
+
   end
 
   # GET /trips/1
