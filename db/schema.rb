@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20130321230235) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "state"
-    t.integer  "session_seat"
+    t.integer  "seat"
     t.integer  "session_trip_id"
   end
 

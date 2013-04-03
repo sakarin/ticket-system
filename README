@@ -6,3 +6,10 @@ rails g model trip_item booking_id:integer trip_id price:integer seat_number
 
 rails g scaffold source name
 rails g scaffold destination name
+
+
+rake figaro:heroku
+
+heroku run rake db:seed
+
+bundle exec rake assets:precompile RAILS_ENV=development

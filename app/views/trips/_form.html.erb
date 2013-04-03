@@ -1,22 +1,21 @@
 <%= simple_form_for(@trip) do |f| %>
-  <%= f.error_notification %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.association :source %>
-    <%= f.association :destination %>
-    <%= f.input :car_standard %>
-    <%= f.input :seat %>
-    <%= f.input :price %>
+    <div class="form-inputs">
+      <%= f.association :source %>
+      <%= f.association :destination %>
+      <%= f.input :car_standard %>
+      <%= f.input :seat %>
+      <%= f.input :price %>
+      <%= f.input :departure %>
+      <%= f.input :arrival %>
+      <%= f.input :company %>
+    </div>
 
-
-    <%= f.input :departure %>
-    <%= f.input :arrival %>
-    <%= f.input :company %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, :class => "btn btn-success" %>
-  </div>
+    <div class="form-actions">
+      <%= f.button :submit, :class => "btn btn-success" %>
+      <%= link_to 'Back', trips_path, :class => "btn btn-inverse" %>
+    </div>
 <% end %>
 
 <script type="text/javascript">

@@ -1,53 +1,83 @@
-<%= render 'shared/step' %>
+<div class="span8">
+  <ul class="processnav" style="margin-top: -10px;">
+    <li class="selectedtab">
+      <a href=""><span class="num">1</span> Search</a></li>
+    <li>
+      <a href=""><span class="num">2</span> Select Trip</a>
+    </li>
 
-<h2>Search Trip</h2>
+    <li>
+      <a href=""><span class="num">3</span> Customer Detail</a>
+    </li>
+    <li>
+    <a href=""><span class="num">4</span> Summary</a>
+    </li>
+  </ul>
+</div>
 
-<%= search_form_for @search, url: search_bookings_path, method: :post, :html => {:class => "f-filter"} do |f| %>
-    <div class="well  span8">
-    <div class="form-inputs">
-      <div class="control-group">
-        <label class="control-label" for="inputSource"> Source:</label>
+<div class="span8">
 
-        <div class="controls">
-          <%= f.collection_select(:source_id_eq, Source.order(:name), :id, :name, {include_blank: false}) %>
-        </div>
-      </div>
+  <div class="widget stacked">
+    <div class="widget-header">
+      <i class="icon-tasks"></i>
 
-      <div class="control-group">
-        <label class="control-label" for="inputSource"> Destination:</label>
+      <h3>Search Trip</h3>
+    </div>
 
-        <div class="controls">
-          <%= f.collection_select(:destination_id_eq, Destination.order(:name), :id, :name, {include_blank: false}) %>
-        </div>
-      </div>
+    <div class="widget-content">
 
-      <div class="control-group">
-        <label class="control-label" for="inputDeparture"> Departure:</label>
-        <div class="controls">
-            <div id="datetimepicker1" class="input-append date">
-              <input data-format="dd/MM/yyyy" type="text" id="q_departure_gt" name="q[departure_gt]"></input>
+      <%#= render 'shared/step' %>
+
+      <%= search_form_for @search, url: search_bookings_path, method: :post, :html => {:class => ""} do |f| %>
+
+          <div class="form-inputs">
+            <div class="control-group">
+              <label class="control-label" for="inputSource"> Source:</label>
+
+              <div class="controls">
+                <%= f.collection_select(:source_id_eq, Source.order(:name), :id, :name, {include_blank: false}) %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputSource"> Destination:</label>
+
+              <div class="controls">
+                <%= f.collection_select(:destination_id_eq, Destination.order(:name), :id, :name, {include_blank: false}) %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputDeparture"> Departure:</label>
+
+              <div class="controls">
+                <div id="datetimepicker1" class="input-append date">
+                  <input data-format="dd/MM/yyyy" type="text" id="q_departure_gt" name="q[departure_gt]"></input>
                 <span class="add-on">
                   <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+
+          <div class="control-group">
+            <label class="control-label" for="inputSource"> Seat:</label>
+
+            <div class="controls">
+              <%= select(:seat, :number, (1..20)) %>
+            </div>
+          </div>
+
+          <div class="form-actions no-indent ">
+            <%= f.button :Search, :class => "btn btn-success floatleft" %>
+          </div>
+
+
+      <% end %>
     </div>
-
-    <div class="control-group">
-      <label class="control-label" for="inputSource"> Seat:</label>
-
-      <div class="controls">
-        <%= select(:seat, :number, (1..20)) %>
-      </div>
-    </div>
-
-    <div class="form-actions no-indent">
-      <%= f.button :submit %>
-    </div>
-
-        </div>
-<% end %>
+  </div>
+</div>
 
 
 <script type="text/javascript">

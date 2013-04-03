@@ -1,19 +1,20 @@
+<div class="span8">
+  <ul class="processnav" style="margin-top: -10px;">
+    <li class="selectedtab">
+      <a href=""><span class="num">1</span> Search</a></li>
+    <li<%== ' class="selectedtab"' if %w(detail media summary).include?(step) %>>
+      <a href=""><span class="num">2</span> Select Trip</a>
+    </li>
 
-    <ul class="processnav">
-      <li class="selectedtab">
-        <a href=""><span class="num">1</span>  Search</a></li>
-      <li<%== ' class="selectedtab"' if %w(detail media summary).include?(step) %>>
-        <a href=""><span class="num">2</span>  Select Trip</a>
-      </li>
-
-      <li<%== ' class="selectedtab"' if %w(media summary).include?(step) %>>
-        <a href=""><span class="num">3</span>  Customer Detail</a>
-      </li>
-      <% if %w(summary).include?(step) %>
-          <li class="last selectedtab">
-      <% else %>
-          <li class="last">
-      <% end %>
-      <a href=""><span class="num">4</span>  Summary</a>
-      </li>
-    </ul>
+    <li<%== ' class="selectedtab"' if %w(:confirm :summary).include?(self.step) %>>
+      <a href=""><span class="num">3</span> Customer Detail</a>
+    </li>
+    <% if %w(summary).include?(self.step) %>
+        <li class="last selectedtab">
+    <% else %>
+        <li class="last">
+    <% end %>
+    <a href=""><span class="num">4</span> Summary</a>
+    </li>
+  </ul>
+</div>

@@ -34,4 +34,8 @@ module ApplicationHelper
     end
   end
 
+  def route_to_s(trip)
+    "#{trip.source.name} - #{trip.destination.name}"
+  end
+
 end

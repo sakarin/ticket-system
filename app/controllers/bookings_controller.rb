@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
   def create
 
     if params[:btn_next]
-      @booking = Booking.create(:session_seat => session[:seat], :session_trip_id => params[:trip_id], :user_id => current_user.id)
+      @booking = Booking.create(:seat => session[:seat], :user_id => current_user.id, :trip_id => params[:trip_id])
       session[:booking_id] = @booking.id
       redirect_to booking_steps_path
     else

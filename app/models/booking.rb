@@ -1,14 +1,15 @@
 class Booking < ActiveRecord::Base
-  attr_accessible :customer_name, :customer_telephone, :number, :pick_up_point, :total, :user_id, :session_seat, :session_trip_id
+  attr_accessible :customer_name, :customer_telephone, :number, :pick_up_point, :total, :user_id, :seat, :trip_id
 
   belongs_to :user
 
+  belongs_to :trip
   has_many :trip_items
-  has_many :trips, :through => :trip_items
 
-  before_validation :generate_order_number, :on => :create
 
-  def generate_order_number
+  before_validation :generate_number, :on => :create
+
+  def generate_number
     record = true
     while record
       random = "#{Array.new(9){rand(9)}.join}"

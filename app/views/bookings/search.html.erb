@@ -1,38 +1,62 @@
-<h1>Listing trips</h1>
-<%= render 'shared/step' %>
+<div class="span8">
+  <ul class="processnav" style="margin-top: -10px;">
+    <li class="selectedtab">
+      <a href=""><span class="num">1</span> Search</a></li>
+    <li  class="selectedtab">
+      <a href=""><span class="num">2</span> Select Trip</a>
+    </li>
 
-<%= search_form_for @search, url: bookings_path, method: :post, :html => {:class => "f-filter"} do |f| %>
+    <li>
+      <a href=""><span class="num">3</span> Customer Detail</a>
+    </li>
+    <li>
+      <a href=""><span class="num">4</span> Summary</a>
+    </li>
+  </ul>
+</div>
 
+<div class="span12">
 
-    <table class="blue">
-      <tr>
-        <th></th>
-        <th>Route</th>
-        <th>Car standard</th>
-        <th>Seat</th>
-        <th>Price</th>
-        <th>Departure</th>
-        <th>Arrival</th>
-        <th>Company</th>
-      </tr>
-
-      <% @departs.each do |trip| %>
-          <tr>
-            <td><%= radio_button_tag(:trip_id, trip.id) %></td>
-            <td><%= "#{trip.source.name} - #{trip.destination.name}" %></td>
-            <td><%= trip.car_standard %></td>
-            <td><%= trip.seat %></td>
-            <td><%= trip.price %></td>
-            <td><%= trip.departure %></td>
-            <td><%= trip.arrival %></td>
-            <td><%= trip.company %></td>
-          </tr>
-      <% end %>
-    </table>
-    <br/>
-
-    <div class="form-actions">
-      <%= f.submit :back, :class => "btn-success floatleft", :name => "btn_back" %>
-      <%= f.submit :next, :class => "btn-success floatright", :name => "btn_next" %>
+  <div class="widget stacked">
+    <div class="widget-header">
+      <i class="icon-tasks"></i>
+      <h3>Listing trips</h3>
     </div>
-<% end %>
+
+    <div class="widget-content">
+      <%= search_form_for @search, url: bookings_path, method: :post, :html => {:class => "f-filter"} do |f| %>
+
+          <table class="blue">
+            <tr>
+              <th></th>
+              <th>Route</th>
+              <th>Car standard</th>
+              <th>Seat</th>
+              <th>Price</th>
+              <th>Departure</th>
+              <th>Arrival</th>
+              <th>Company</th>
+            </tr>
+
+            <% @departs.each do |trip| %>
+                <tr>
+                  <td><%= radio_button_tag(:trip_id, trip.id) %></td>
+                  <td><%= "#{trip.source.name} - #{trip.destination.name}" %></td>
+                  <td><%= trip.car_standard %></td>
+                  <td><%= trip.seat %></td>
+                  <td><%= trip.price %></td>
+                  <td><%= trip.departure %></td>
+                  <td><%= trip.arrival %></td>
+                  <td><%= trip.company %></td>
+                </tr>
+            <% end %>
+          </table>
+
+          <div class="form-actions">
+            <%= f.submit :back, :class => "btn btn-success floatleft", :name => "btn_back" %>
+            <%= f.submit :next, :class => "btn btn-success floatright", :name => "btn_next" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

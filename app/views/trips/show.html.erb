@@ -1,44 +1,56 @@
-<p id="notice"><%= notice %></p>
+<div class="span8">
+  <div class="widget stacked">
+    <div class="widget-header">
+      <i class="icon-edit"></i>
 
-<p>
-  <b>From:</b>
-  <%= @trip.source.name %>
-</p>
-<p>
-  <b>To:</b>
-  <%= @trip.destination.name %>
-</p>
+      <h3>Customers </h3>
+    </div>
 
-<p>
-  <b>Car standard:</b>
-  <%= @trip.car_standard %>
-</p>
-
-<p>
-  <b>Seat:</b>
-  <%= @trip.seat %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @trip.price %>
-</p>
-
-<p>
-  <b>Departure:</b>
-  <%= @trip.departure %>
-</p>
-
-<p>
-  <b>Arrival:</b>
-  <%= @trip.arrival %>
-</p>
-
-<p>
-  <b>Company:</b>
-  <%= @trip.company %>
-</p>
+    <div class="widget-content">
+      <table class="blue">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Tel</th>
+          <th>Seat</th>
+          <th>Pick Up Point</th>
+        </tr>
 
 
-<%= link_to 'Edit', edit_trip_path(@trip) %> |
-<%= link_to 'Back', trips_path %>
+        <% @trip.bookings.each do |booking| %>
+            <tr>
+              <td><%= booking.id %></td>
+              <td><%= booking.customer_name %></td>
+              <td><%= booking.customer_telephone %></td>
+              <td><%= booking.trip_items.count(:id) %></td>
+              <td><%= booking.pick_up_point %></td>
+
+            </tr>
+
+        <% end %>
+      </table>
+
+      <div class="btn-with-navbar">
+        <%#= will_paginate @trip, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
+        <%= link_to "Back", trips_path, :class => "btn btn-success" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="span4">
+  <div class="widget stacked widget-box">
+    <div class="widget-header">
+      <i class="icon-search"></i>
+      <h3>Search Sources</h3>
+    </div>
+
+    <div class="widget-content">
+
+    </div>
+
+
+  </div>
+</div>
+

@@ -9,3 +9,9 @@ en:
       input: "%d/%m/%Y"
       default: "%d %b %Y"
       long: "%A %e %B %Y"
+
+  toolbars:
+    edit: "edit"
+    delete: "delete"
+  confirm:
+    delete: "delete your data"

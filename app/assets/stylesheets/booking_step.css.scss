@@ -1,3 +1,15 @@
 // Place all the styles related to the BookingStep controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#print-ticket {
+  float: right;
+  //padding-right: 15px;
+  vertical-align: bottom;
+}
+
+
+#summary-ticket{
+  //width: 250px;
+  display: inline;
+}

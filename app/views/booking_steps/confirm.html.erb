@@ -1,51 +1,114 @@
-<h1>BookingStep#comfirm</h1>
-<p>Find me in app/views/booking_step/comfirm.html.erb</p>
+<div class="span8">
+  <ul class="processnav" style="margin-top: -10px;">
+    <li class="selectedtab">
+      <a href=""><span class="num">1</span> Search</a></li>
+    <li  class="selectedtab">
+      <a href=""><span class="num">2</span> Select Trip</a>
+    </li>
 
-<p id="notice"><%= notice %></p>
+    <li class="selectedtab">
+      <a href=""><span class="num">3</span> Customer Detail</a>
+    </li>
+    <li>
+      <a href=""><span class="num">4</span> Summary</a>
+    </li>
+  </ul>
+</div>
 
-<p>
-  <b>From:</b>
-  <%= @trip.source.name %>
-</p>
-<p>
-  <b>To:</b>
-  <%= @trip.destination.name %>
-</p>
+<%= simple_form_for @booking, url: wizard_path do |f| %>
+    <div class="span8">
 
-<p>
-  <b>Car standard:</b>
-  <%= @trip.car_standard %>
-</p>
 
-<p>
-  <b>Seat:</b>
-  <%= @trip.seat %>
-</p>
+      <div class="widget stacked">
+        <div class="widget-header">
+          <i class="icon-tasks"></i>
 
-<p>
-  <b>Price:</b>
-  <%= @trip.price %>
-</p>
+          <h3>Customer Details</h3>
+        </div>
 
-<p>
-  <b>Departure:</b>
-  <%= @trip.departure %>
-</p>
+        <div class="widget-content">
 
-<p>
-  <b>Arrival:</b>
-  <%= @trip.arrival %>
-</p>
 
-<p>
-  <b>Company:</b>
-  <%= @trip.company %>
-</p>
 
-<%= render layout: 'form' do |f| %>
 
-    <%= f.input :customer_name %>
-    <%= f.input :customer_telephone %>
-    <%= f.input :pick_up_point %>
 
+
+                <%= f.input :customer_name %>
+                <%= f.input :customer_telephone %>
+                <%= f.input :pick_up_point %>
+
+
+          <div class="clearfix"></div>
+
+          <div class="form-actions">
+            <% unless step == :summary %>
+                <%= f.submit :back, :class => "btn btn-success floatleft", :name => "btn_back" %>
+            <% end %>
+
+            <%= f.submit :next, :class => "btn btn-success floatright", :name => "btn_next" %>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
 <% end %>
+
+<div class="span4">
+  <div class="widget stacked">
+    <div class="widget-header">
+      <i class="icon-tasks"></i>
+
+      <h3>Ticket Detail</h3>
+    </div>
+    <div class="widget-content">
+
+      <div class="ticket-details">
+        <ul>
+          <li>
+            <p>
+              <b>Route:</b>
+              <%= route_to_s @trip %>
+            </p>
+
+            <p>
+              <b>Car standard:</b>
+              <%= @trip.car_standard %>
+            </p>
+
+            <p>
+              <b>Departure:</b>
+              <%= I18n.l(@trip.departure, :format => :long) %>
+            </p>
+
+            <p>
+              <b>Arrival:</b>
+              <%= I18n.l(@trip.arrival, :format => :long) %>
+            </p>
+
+            <p>
+              <b>Company:</b>
+              <%= @trip.company %>
+            </p>
+
+            <p>
+              <b>Price:</b>
+              <%= @trip.price %>
+            </p>
+
+          </li>
+          <li>
+            <p>
+              <b>Total Price:</b>
+              <%= "(#{@trip.price} x #{@booking.seat}) = #{@trip.price * @booking.seat}" %>
+            </p>
+          </li>
+
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+</div>

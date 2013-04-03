@@ -1,23 +1,70 @@
-<h1>Listing sources</h1>
+<div class="span8">
+  <div class="widget stacked">
+    <div class="widget-header">
+      <i class="icon-tasks"></i>
+      <h3>Listing sources</h3>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    </div>
 
-<% @sources.each do |source| %>
-  <tr>
-    <td><%= source.name %></td>
-    <td><%= link_to 'Show', source %></td>
-    <td><%= link_to 'Edit', edit_source_path(source) %></td>
-    <td><%= link_to 'Destroy', source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <div class="widget-content">
+      <table class="blue">
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
 
-<br />
+        <% @sources.each do |source| %>
+            <tr>
+              <td><%= source.name %></td>
+              <td class="toolbars">
+                <div class="expert_actions">
+                  <%= link_to t('toolbars.edit'), edit_source_path(source), :title => t('toolbars.edit'), :class => "act edit" %>
+                  <%= link_to t('toolbars.delete'), source, confirm: t('confirm.delete'), method: :delete, :title => t('toolbars.delete'), :class => "act delete" %>
+                </div>
+              </td>
 
-<%= link_to 'New Source', new_source_path %>
+            </tr>
+        <% end %>
+      </table>
+
+      <div class="btn-with-navbar">
+        <%= will_paginate @sources, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
+        <%= link_to "New Source", new_source_path, :class => "btn btn-success" %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="span4">
+  <div class="widget stacked widget-box">
+    <div class="widget-header">
+      <i class="icon-search"></i>
+      <h3>Search Sources</h3>
+    </div>
+    <!-- /widget-header -->
+
+    <div class="widget-content">
+
+      <%= search_form_for @search, :html => {:class => ""} do |f| %>
+          <div class="form-inputs">
+            <div class="control-group source_name">
+              <label class="control-label" for="source_name">Name</label>
+
+              <div class="controls">
+                <div class="input-append">
+                  <%= f.text_field :name_cont %>
+                  <%= f.button :search, :class => "btn" %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+      <% end %>
+
+    </div>
+    <!-- /widget-content -->
+
+  </div>
+</div>

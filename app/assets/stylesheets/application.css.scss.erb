@@ -12,91 +12,94 @@
  *= require_tree .
 */
 
+body {
+    background: #e9e9e9 url(<%= asset_path 'tiny_grid.png'  %>) repeat 0 0;
+}
+
 .content {
-  background-color: #eee;
-  padding: 20px;
-  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    background-color: #eee;
+    padding: 20px;
+    margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
 }
 
 #footer {
-  clear: both;
-  border-top: 1px dotted #AAA;
-  padding: 10px 0;
-  color: #FFF;
-  text-align: center;
-  margin-top: 20px;
+    clear: both;
+    border-top: 1px dotted #AAA;
+    padding: 10px 0;
+    /*color: #FFF;*/
+    text-align: center;
+    margin-top: 20px;
 }
 
 /* ----------------------------------------------------- */
 /* -----               process nav             --------- */
 /* ----------------------------------------------------- */
 ul.processnav {
-  font: bold 12px verdana, arial, sans-serif;
-  list-style-type: none;
-  width: 100%;
-  overflow: hidden;
-  margin-left: 0px;
+    font: 12px verdana, arial, sans-serif;
+    list-style-type: none;
+    width: 100%;
+    overflow: hidden;
+    margin-left: 0px;
 }
 
 ul.processnav li {
-  float: left;
+    float: left;
 }
 
 ul.processnav li a {
-  color: #aaa;
-  white-space: nowrap;
-  position: relative;
-  line-height: 35px;
-  margin-right: 25px;
-  padding: 10px 20px 10px 0;
-  background: transparent url(<%= asset_path 'arrow-right.png' %>) center right no-repeat;
+    color: #aaa;
+    white-space: nowrap;
+    position: relative;
+    line-height: 35px;
+    margin-right: 25px;
+    padding: 10px 20px 10px 0;
+    background: transparent url(<%= asset_path 'arrow-right.png' %>) center right no-repeat;
+
 }
 
 ul.processnav li a:hover {
-  color: #000;
-  text-decoration: none;
-  background: transparent url(<%= asset_path 'arrow-right-active.png' %>) center right no-repeat;
+    color: #000;
+    text-decoration: none;
+    background: transparent url(<%= asset_path 'arrow-right-active.png' %>) center right no-repeat;
 }
 
 ul.processnav li.last a, ul.processnav li.last a:hover, ul.processnav li.selectedtab.last a {
-  margin-right: 0;
-  background: none;
+    margin-right: 0;
+    background: none;
 }
 
 ul.processnav li a span.num, ul.processnav li.disabledtab a:hover span.num {
-  padding: 10px 12px;
-  color: #aaa;
-  background: transparent url(<%= asset_path 'step-bg.png' %>) center center no-repeat;
+    padding: 10px 12px;
+    color: #aaa;
+    background: transparent url(<%= asset_path 'step-bg.png' %>) center center no-repeat;
 }
 
 ul.processnav li.selectedtab a {
-  background: transparent url(<%= asset_path 'arrow-right-active.png' %>) center right no-repeat;
-  color: #000;
-  text-decoration: none;
+    background: transparent url(<%= asset_path 'arrow-right-active.png' %>) center right no-repeat;
+    color: #000;
+    text-decoration: none;
 }
 
 ul.processnav li.selectedtab a span.num, ul.processnav li a:hover span.num {
-  color: #fff;
-  background: transparent url(<%= asset_path 'step-bg-active.png' %>) center center no-repeat;
+    color: #fff;
+    background: transparent url(<%= asset_path 'step-bg-active.png' %>) center center no-repeat;
 }
 
 ul.processnav li.disabledtab a {
-  background: transparent url(<%= asset_path 'arrow-right.png' %>) center right no-repeat;
-  color: #aaa !important;
-  text-decoration: none !important;
+    background: transparent url(<%= asset_path 'arrow-right.png' %>) center right no-repeat;
+    color: #aaa !important;
+    text-decoration: none !important;
 }
 
 ul.processnav li.last.disabledtab a {
-  background: none;
+    background: none;
 }
-
-
 
 .floatright {
     float: right;
@@ -104,6 +107,11 @@ ul.processnav li.last.disabledtab a {
 
 .floatleft {
     float: left;
+}
+
+.btn.middle {
+    position: absolute;
+    left: 520px;
 }
 
 .no-indent {
@@ -132,4 +140,44 @@ ul.processnav li.last.disabledtab a {
     padding: 8px;
     background-color: whiteSmoke;
     border-radius: 3px;
+}
+
+.toolbars {
+    width: 60px;
+}
+
+.header-toolbar {
+    vertical-align: bottom;
+}
+
+.btn-with-navbar {
+    display: inline;
+}
+
+.ticket-details li {
+    padding: 0.5em 0;
+    /*margin: 0 2em;*/
+    /*text-align: center;*/
+    border-bottom: 1px dotted #CCC;
+}
+
+.ticket-details {
+    /*border: 1px solid #DDD;*/
+    border-bottom: none;
+}
+
+.ticket-details ul {
+    list-style: none;
+    margin: 0 0 0px 0px;
+}
+
+.bs-docs-example {
+    position: relative;
+    margin: 15px 0;
+    padding: 15px 15px 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
