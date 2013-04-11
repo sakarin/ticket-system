@@ -9,7 +9,7 @@
     <li class="selectedtab">
       <a href=""><span class="num">3</span> Customer Detail</a>
     </li>
-    <li>
+    <li class="last">
       <a href=""><span class="num">4</span> Summary</a>
     </li>
   </ul>
@@ -28,24 +28,18 @@
 
         <div class="widget-content">
 
-
-
-
-
-
                 <%= f.input :customer_name %>
                 <%= f.input :customer_telephone %>
                 <%= f.input :pick_up_point %>
-
 
           <div class="clearfix"></div>
 
           <div class="form-actions">
             <% unless step == :summary %>
-                <%= f.submit :back, :class => "btn btn-success floatleft", :name => "btn_back" %>
+                <%= f.submit :back, :class => "btn floatleft", :name => "btn_back" %>
             <% end %>
 
-            <%= f.submit :next, :class => "btn btn-success floatright", :name => "btn_next" %>
+            <%= f.submit :confirm, :class => "btn btn-success floatright", :name => "btn_next", :confirm => "Do you want Confirm your ticket?" %>
           </div>
 
         </div>

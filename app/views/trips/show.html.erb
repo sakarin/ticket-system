@@ -20,7 +20,7 @@
         <% @trip.bookings.each do |booking| %>
             <tr>
               <td><%= booking.id %></td>
-              <td><%= booking.customer_name %></td>
+              <td><%= link_to "#{booking.customer_name}", report_booking_path(booking) %></td>
               <td><%= booking.customer_telephone %></td>
               <td><%= booking.trip_items.count(:id) %></td>
               <td><%= booking.pick_up_point %></td>
@@ -43,10 +43,43 @@
   <div class="widget stacked widget-box">
     <div class="widget-header">
       <i class="icon-search"></i>
-      <h3>Search Sources</h3>
+      <h3>Trip Details</h3>
     </div>
 
     <div class="widget-content">
+      <div class="ticket-details">
+
+            <p>
+              <b>Route:</b>
+              <%= route_to_s @trip %>
+            </p>
+
+            <p>
+              <b>Car standard:</b>
+              <%= @trip.car_standard %>
+            </p>
+
+            <p>
+              <b>Departure:</b>
+              <%= I18n.l(@trip.departure, :format => :long) %>
+            </p>
+
+            <p>
+              <b>Arrival:</b>
+              <%= I18n.l(@trip.arrival, :format => :long) %>
+            </p>
+
+            <p>
+              <b>Company:</b>
+              <%= @trip.company %>
+            </p>
+
+            <p>
+              <b>Price:</b>
+              <%= @trip.price %>
+            </p>
+
+      </div>
 
     </div>
 

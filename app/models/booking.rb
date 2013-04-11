@@ -41,6 +41,10 @@ class Booking < ActiveRecord::Base
   #   Trip.find(trip_id)
   #end
 
+  ransacker :created_at_casted do |parent|
+    Arel::Nodes::SqlLiteral.new("date(bookings.created_at)")
+  end
+
 
 
 end

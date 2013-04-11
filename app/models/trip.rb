@@ -15,6 +15,10 @@ class Trip < ActiveRecord::Base
     self.seat >= self.bookings.sum(:seat) + number_of_seats
   end
 
+  def check_before_date
+    self.departure < 24.hours.ago
+  end
+
   def generate_number
     record = true
     while record
@@ -23,6 +27,10 @@ class Trip < ActiveRecord::Base
     end
     self.number = random if self.number.blank?
     self.number
+  end
+
+  ransacker :created_at_casted do |parent|
+    Arel::Nodes::SqlLiteral.new("date(trips.created_at)")
   end
 
 

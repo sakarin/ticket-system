@@ -1,11 +1,23 @@
-<h2>Sign up</h2>
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-  <%= f.error_notification %>
-  <%= display_base_errors resource %>
-  <%= f.input :name, :autofocus => true %>
-  <%= f.input :email, :required => true %>
-  <%= f.input :password, :required => true %>
-  <%= f.input :password_confirmation, :required => true %>
-  <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
-<% end %>
-<%= render "devise/shared/links" %>
+<div class="span12">
+  <div class="widget stacked">
+    <div class="widget-header">
+      <i class="icon-tasks"></i>
+
+      <h3>Sign in</h3>
+    </div>
+
+    <div class="widget-content">
+      <h2>Sign up</h2>
+      <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical'}) do |f| %>
+          <%= f.error_notification %>
+          <%= display_base_errors resource %>
+          <%= f.input :name, :autofocus => true %>
+          <%= f.input :email, :required => true %>
+          <%= f.input :password, :required => true %>
+          <%= f.input :password_confirmation, :required => true %>
+          <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

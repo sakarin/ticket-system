@@ -9,7 +9,7 @@
     <li>
       <a href=""><span class="num">3</span> Customer Detail</a>
     </li>
-    <li>
+    <li class="last">
       <a href=""><span class="num">4</span> Summary</a>
     </li>
   </ul>
@@ -20,7 +20,7 @@
   <div class="widget stacked">
     <div class="widget-header">
       <i class="icon-tasks"></i>
-      <h3>Listing trips</h3>
+      <h3>Select Trip</h3>
     </div>
 
     <div class="widget-content">
@@ -53,7 +53,7 @@
           </table>
 
           <div class="form-actions">
-            <%= f.submit :back, :class => "btn btn-success floatleft", :name => "btn_back" %>
+            <%= f.submit :back, :class => "btn floatleft", :name => "btn_back" %>
             <%= f.submit :next, :class => "btn btn-success floatright", :name => "btn_next" %>
           </div>
       <% end %>

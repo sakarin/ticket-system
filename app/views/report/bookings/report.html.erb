@@ -1,0 +1,76 @@
+<div class="widget-content" id="printArea">
+  <div class="span8">
+    <h4>Travel Itinerary</h4>
+    <h4>Booking ID : <%= @booking.number %></h4>
+  </div>
+  <div class="clearfix"></div>
+
+
+  <div id="summary-ticket " class="span4">
+    <div class="bs-docs-example">
+      <p>customer detail</p>
+
+      <p>name : <%= @booking.customer_name %></p>
+
+      <p>telephone : <%= @booking.customer_telephone %></p>
+
+      <p>PickUp Point : <%= @booking.pick_up_point %></p>
+    </div>
+
+
+    <div class="bs-docs-example">
+      <p>Payment</p>
+
+      <p>Price Ticket: <%= "(#{@trip.price} x #{@booking.seat}) = #{@trip.price * @booking.seat}" %></p>
+
+      <p>Price Total : <%= "#{@trip.price * @booking.seat}" %></p>
+    </div>
+  </div>
+
+  <div class="bs-docs-example  span4">
+
+    <p><b>Travel</b></p>
+
+    <p>
+      <b>Route:</b>
+      <%= route_to_s @trip %>
+    </p>
+
+    <p>
+      <b>Departure:</b>
+      <%= I18n.l(@trip.departure, :format => :long) %>
+    </p>
+
+    <p>
+      <b>Arrival:</b>
+      <%= I18n.l(@trip.arrival, :format => :long) %>
+    </p>
+
+    <p>
+      <b>Car standard:</b>
+      <%= @trip.car_standard %>
+    </p>
+
+    <p>
+      <b>Company:</b>
+      <%= @trip.company %>
+    </p>
+
+    <p>
+      <b>Price:</b>
+      <%= @trip.price %>
+    </p>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="span8">
+    condition
+  </div>
+
+  <div class="clearfix"></div>
+
+
+
+
+</div>

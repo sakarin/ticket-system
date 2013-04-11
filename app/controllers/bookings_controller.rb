@@ -30,9 +30,14 @@ class BookingsController < ApplicationController
   def create
 
     if params[:btn_next]
+      @trip = Trip.find(params[:trip_id])
+      if @trip.check_before_date
       @booking = Booking.create(:seat => session[:seat], :user_id => current_user.id, :trip_id => params[:trip_id])
       session[:booking_id] = @booking.id
       redirect_to booking_steps_path
+      else
+        redirect_to :back, :alert => "before 24 H"
+      end
     else
       redirect_to bookings_path
     end
