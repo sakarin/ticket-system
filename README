@@ -13,3 +13,14 @@ rake figaro:heroku
 heroku run rake db:seed
 
 bundle exec rake assets:precompile RAILS_ENV=development
+
+
+Deploy your code:
+------
+git push heroku master
+------
+
+
+Rails Asset Pipeline on Heroku Cedar
+====================================
+RAILS_ENV=production bundle exec rake assets:precompile
