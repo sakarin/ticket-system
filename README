@@ -8,19 +8,21 @@ rails g scaffold source name
 rails g scaffold destination name
 
 
+Getting Started with Rails 3.x on Heroku
+========================================
+https://devcenter.heroku.com/articles/rails3
+
 rake figaro:heroku
 
 heroku run rake db:seed
 
-bundle exec rake assets:precompile RAILS_ENV=development
+
+Rails Asset Pipeline on Heroku Cedar
+====================================
+bundle exec rake assets:precompile RAILS_ENV=production
 
 
 Deploy your code:
 ------
 git push heroku master
 ------
-
-
-Rails Asset Pipeline on Heroku Cedar
-====================================
-RAILS_ENV=production bundle exec rake assets:precompile

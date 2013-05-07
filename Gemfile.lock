@@ -29,13 +29,10 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.3)
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    better_errors (0.7.2)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
-    binding_of_caller (0.7.1)
-      debug_inspector (>= 0.0.1)
     builder (3.0.4)
     cancan (1.6.9)
     capybara (2.0.2)
@@ -45,9 +42,11 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 1.0.0)
+    carrierwave (0.8.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
-    coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -57,7 +56,6 @@ GEM
     coffee-script-source (1.6.1)
     commonjs (0.2.6)
     database_cleaner (0.9.1)
-    debug_inspector (0.0.2)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -84,6 +82,7 @@ GEM
       bundler (~> 1.0)
       rails (>= 3, < 5)
     hike (1.2.1)
+    hirb (0.7.1)
     i18n (0.6.4)
     journey (1.0.4)
     jquery-rails (2.2.1)
@@ -104,6 +103,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
+    mini_magick (3.5.0)
+      subexec (~> 0.2.1)
     multi_json (1.7.0)
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
@@ -143,6 +144,10 @@ GEM
       polyamorous (~> 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redactor-rails (0.3.3)
+      devise
+      mime-types
+      orm_adapter
     ref (1.0.2)
     rolify (3.2.0)
     rspec-core (2.13.1)
@@ -181,6 +186,7 @@ GEM
       activesupport (~> 3.0)
       polyamorous (~> 0.5.0)
     state_machine (1.1.2)
+    subexec (0.2.2)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -217,10 +223,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  better_errors (>= 0.6.0)
-  binding_of_caller (>= 0.7.1)
+  annotate
   cancan (>= 1.6.8)
   capybara (>= 2.0.2)
+  carrierwave
   coffee-rails (~> 3.2.1)
   database_cleaner (>= 0.9.1)
   devise (>= 2.2.3)
@@ -228,13 +234,16 @@ DEPENDENCIES
   email_spec (>= 1.4.0)
   factory_girl_rails (>= 4.2.0)
   figaro (>= 0.5.3)
+  hirb
   jquery-rails
   less-rails (>= 2.2.6)
   libv8 (>= 3.11.8)
+  mini_magick
   pg
   quiet_assets (>= 1.0.1)
   rails (= 3.2.12)
   ransack (>= 0.7.0)
+  redactor-rails
   rolify (>= 3.2.0)
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)

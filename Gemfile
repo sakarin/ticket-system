@@ -25,8 +25,11 @@ gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.4"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "figaro", ">= 0.5.3"
-gem "better_errors", ">= 0.6.0", :group => :development
-gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
+
+gem "carrierwave"
+gem "mini_magick"
+gem 'redactor-rails'
+
 
 gem 'ransack', ">= 0.7.0"
 gem "squeel", ">= 1.0.13"
@@ -34,3 +37,13 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'wicked'
 gem 'state_machine'
+
+
+group :development do
+  # See http://thechangelog.com/xray-rails-reveals-which-files-are-being-rendered-in-your-view/
+  # bundle && rm -rf tmp/cache/assets
+  #gem 'xray-rails'
+  gem 'hirb'
+  gem 'annotate'
+
+end

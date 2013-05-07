@@ -1,8 +1,8 @@
-class CreateTrips < ActiveRecord::Migration
+class CreateRoutes < ActiveRecord::Migration
   def change
-    create_table :trips do |t|
+    create_table :routes do |t|
       t.string :number
-      t.integer :source_id
+      t.string :route_type
       t.integer :destination_id
       t.string :car_standard
       t.integer :seat
@@ -10,6 +10,8 @@ class CreateTrips < ActiveRecord::Migration
       t.datetime :departure
       t.datetime :arrival
       t.string :company
+      t.text :description
+
 
       t.timestamps
     end

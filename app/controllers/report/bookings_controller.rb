@@ -6,14 +6,14 @@ class Report::BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-    @trip = @booking.trip
+    @route = @booking.route
   end
 
   def report
 
 
     @booking = Booking.find(params[:id])
-    @trip = @booking.trip
+    @route = @booking.route
     render layout: 'report'
   end
 end

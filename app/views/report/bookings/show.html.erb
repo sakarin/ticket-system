@@ -29,9 +29,9 @@
         <div class="bs-docs-example">
           <p>Payment</p>
 
-          <p>Price Ticket: <%= "(#{@trip.price} x #{@booking.seat}) = #{@trip.price * @booking.seat}" %></p>
+          <p>Price Ticket: <%= "(#{@route.price} x #{@booking.seat}) = #{@route.price * @booking.seat}" %></p>
 
-          <p>Price Total : <%= "#{@trip.price * @booking.seat}" %></p>
+          <p>Price Total : <%= "#{@route.price * @booking.seat}" %></p>
         </div>
       </div>
 
@@ -41,32 +41,32 @@
 
         <p>
           <b>Route:</b>
-          <%= route_to_s @trip %>
+          <%= route_to_s @route %>
         </p>
 
         <p>
           <b>Departure:</b>
-          <%= I18n.l(@trip.departure, :format => :long) %>
+          <%= I18n.l(@route.departure, :format => :long) %>
         </p>
 
         <p>
           <b>Arrival:</b>
-          <%= I18n.l(@trip.arrival, :format => :long) %>
+          <%= I18n.l(@route.arrival, :format => :long) %>
         </p>
 
         <p>
           <b>Car standard:</b>
-          <%= @trip.car_standard %>
+          <%= @route.car_standard %>
         </p>
 
         <p>
           <b>Company:</b>
-          <%= @trip.company %>
+          <%= @route.company %>
         </p>
 
         <p>
           <b>Price:</b>
-          <%= @trip.price %>
+          <%= @route.price %>
         </p>
       </div>
 

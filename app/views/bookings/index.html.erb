@@ -3,7 +3,7 @@
     <li class="selectedtab">
       <a href=""><span class="num">1</span> Search</a></li>
     <li>
-      <a href=""><span class="num">2</span> Select Trip</a>
+      <a href=""><span class="num">2</span> Select Route</a>
     </li>
 
     <li>
@@ -21,7 +21,7 @@
     <div class="widget-header">
       <i class="icon-tasks"></i>
 
-      <h3>Search Trip</h3>
+      <h3>Search Route</h3>
     </div>
 
     <div class="widget-content">
@@ -32,11 +32,16 @@
 
           <div class="form-inputs">
             <div class="control-group">
-              <label class="control-label" for="inputSource"> Source:</label>
-
-              <div class="controls">
-                <%= f.collection_select(:source_id_eq, Source.order(:name), :id, :name, {include_blank: false}) %>
-              </div>
+              <label class="control-label" for="inputSource"> Route Type:</label>
+              <label class="radio">
+                <%= radio_button("q", "route_type_cont", "airport") %>Mini Bus to Airport
+              </label>
+              <label class="radio">
+                <%= radio_button("q", "route_type_cont", "tour") %>Tour
+              </label>
+              <label class="radio">
+              <%= radio_button("q", "route_type_cont", "bus") %>Bus Ticket
+            </label>
             </div>
 
             <div class="control-group">
@@ -52,7 +57,8 @@
 
               <div class="controls">
                 <div id="datetimepicker1" class="input-append date">
-                  <input data-format="dd/MM/yyyy" type="text" id="q_departure_casted_date_equals" name="q[departure_casted_date_equals]"></input>
+                  <input data-format="dd/MM/yyyy" type="text" id="q_departure_at_casted_date_equals" name="q[departure_at_casted_date_equals]"/>
+                  <!--input data-format="dd/MM/yyyy" type="text" id="q_departure_casted_date_equals" name="q[departure_casted_date_equals]"/-->
                 <span class="add-on">
                   <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>

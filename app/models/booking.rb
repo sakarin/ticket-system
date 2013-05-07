@@ -1,10 +1,33 @@
+# == Schema Information
+#
+# Table name: bookings
+#
+#  id                 :integer          not null, primary key
+#  route_id           :integer
+#  number             :string(255)
+#  total              :string(255)
+#  pick_up_point      :string(255)
+#  customer_name      :string(255)
+#  customer_telephone :string(255)
+#  seat               :integer
+#  state              :string(255)
+#  user_id            :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  no                 :string(255)
+#  price              :integer
+#  seller             :string(255)
+#  completed_at       :datetime
+#
+
 class Booking < ActiveRecord::Base
-  attr_accessible :customer_name, :customer_telephone, :number, :pick_up_point, :total, :user_id, :seat, :trip_id
+  attr_accessible :customer_name, :customer_telephone, :number, :pick_up_point, :total, :user_id, :seat, :route_id
+  attr_accessible :no, :price, :seller, :completed_at
 
   belongs_to :user
 
-  belongs_to :trip
-  has_many :trip_items
+  belongs_to :route
+  has_many :booking_items
 
 
   before_validation :generate_number, :on => :create
@@ -23,7 +46,7 @@ class Booking < ActiveRecord::Base
   scope :pending, with_state('pending')
   scope :complete, with_state('complete')
 
-  validates_presence_of :customer_name, :on => :update
+  validates_presence_of :customer_name, :no, :price, :seller, :on => :update
 
 
   # shipment state machine (see http://github.com/pluginaweek/state_machine/tree/master for details)
@@ -32,14 +55,12 @@ class Booking < ActiveRecord::Base
       transition :from => 'pending', :to => 'complete'
     end
 
-    #after_transition :to => 'shipped', :do => :after_ship
+    after_transition :to => 'complete', :do => :after_complete
   end
 
-
-
-  #def can_booking(trip_id)
-  #   Trip.find(trip_id)
-  #end
+  def after_complete
+    touch :completed_at
+  end
 
   ransacker :created_at_casted do |parent|
     Arel::Nodes::SqlLiteral.new("date(bookings.created_at)")

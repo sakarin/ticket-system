@@ -1,0 +1,73 @@
+<div class="span12">
+  <div class="widget stacked">
+    <div class="widget-header">
+      <i class="icon-edit"></i>
+
+      <h3>Listing Routes</h3>
+    </div>
+    <div class="widget-content">
+
+      <div class="clearboth"></div>
+
+      <%= search_form_for @search, :html => {:class => "f-filter"} do |f| %>
+          <div class="tab-content">
+            <div class="btn-group floatleft">
+
+              <%= link_to "Mini Bus to Airport", params.merge({:q => {:listing_type_does_not_equal => ''}}), {:class => 'btn active'} %>
+              <%= link_to "Tour", params.merge({:q => {:listing_type_cont => 'sale'}}), {:class => 'btn'} %>
+              <%= link_to "Bus Ticket", params.merge({:q => {:listing_type_cont => 'rent'}}), {:class => 'btn'} %>
+            </div>
+
+            <div class="floatright">
+              <%#= f.select(:source_id_cont, Source.all.collect { |source| [source.name, source.id] }, {:prompt => "search by scorce"}) %>
+              <%= f.select(:destination_id_cont, Destination.all.collect { |d| [d.name, d.id] }, {:prompt => "search by destination"}) %>
+
+            </div>
+          </div>
+      <% end %>
+
+      <table class="blue">
+        <tr>
+          <th><%= sort_link @search, :number, "#ID" %></th>
+          <th>Route</th>
+          <th>Car standard</th>
+          <th>Seat</th>
+          <th><%= sort_link @search, :price, "Price" %></th>
+          <th><%= sort_link @search, :departure, "Departure" %></th>
+          <th><%= sort_link @search, :arrival, "Arrival" %></th>
+          <th>Company</th>
+          <th></th>
+        </tr>
+
+        <% @routes.each do |route| %>
+            <tr>
+              <td><%= route.number %></td>
+              <td><%= link_to route.destination.name, route_path(route) %></td>
+              <td><%= route.car_standard %></td>
+              <td><%= route.seat %></td>
+              <td><%= route.price %></td>
+              <td><%= I18n.l(route.departure, :format => :long) %><%#= route.departure.to_s(:time) %></td>
+              <td><%= I18n.l(route.arrival, :format => :long) %></td>
+              <td><%= route.company %></td>
+              <td>
+                <div class="route_actions">
+                  <%= link_to t('toolbars.edit'), edit_route_path(route), :title => t('toolbars.edit'), :class => "act edit" %>
+                  <%= link_to t('toolbars.delete'), route_path(route), confirm: t('confirm.delete'), method: :delete, :title => t('toolbars.delete') , :class => "act delete" %>
+                </div>
+              </td>
+
+            </tr>
+        <% end %>
+      </table>
+      <div class="btn-with-navbar">
+        <%= will_paginate @routes, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
+        <%= link_to "New Route", new_route_path, :class => "btn btn-success" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+

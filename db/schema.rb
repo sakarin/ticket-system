@@ -11,57 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321230235) do
+ActiveRecord::Schema.define(:version => 20130507090415) do
 
-  create_table "_trips_old_20130318", :force => true do |t|
-    t.string   "route"
-    t.string   "car_standard"
-    t.integer  "seat"
+  create_table "booking_items", :force => true do |t|
+    t.integer  "booking_id"
     t.integer  "price"
-    t.datetime "Departure"
-    t.datetime "Arrival"
-    t.string   "company"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "_trips_old_20130318_1", :force => true do |t|
-    t.string   "route"
-    t.string   "car_standard"
-    t.integer  "seat"
-    t.integer  "price"
-    t.datetime "departure"
-    t.datetime "arrival"
-    t.string   "company"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "_trips_old_20130318_2", :force => true do |t|
-    t.string   "from"
-    t.string   "car_standard"
-    t.integer  "seat"
-    t.integer  "price"
-    t.datetime "departure"
-    t.datetime "arrival"
-    t.string   "company"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "to"
+    t.string   "seat_number"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "bookings", :force => true do |t|
+    t.integer  "route_id"
     t.string   "number"
     t.string   "total"
     t.string   "pick_up_point"
     t.string   "customer_name"
     t.string   "customer_telephone"
+    t.integer  "seat"
+    t.string   "state"
     t.integer  "user_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-    t.string   "state"
-    t.integer  "seat"
-    t.integer  "session_trip_id"
+    t.string   "no"
+    t.integer  "price"
+    t.string   "seller"
+    t.datetime "completed_at"
   end
 
   create_table "destinations", :force => true do |t|
@@ -81,6 +56,23 @@ ActiveRecord::Schema.define(:version => 20130321230235) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "redactor_assets", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], :name => "idx_redactor_assetable"
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -92,33 +84,30 @@ ActiveRecord::Schema.define(:version => 20130321230235) do
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
-  create_table "sources", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "trip_items", :force => true do |t|
-    t.integer  "booking_id"
-    t.string   "trip_id"
-    t.integer  "price"
-    t.string   "seat_number"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "trips", :force => true do |t|
-    t.integer  "source_id",      :null => false
+  create_table "routes", :force => true do |t|
+    t.string   "number"
+    t.string   "route_type"
+    t.integer  "destination_id"
     t.string   "car_standard"
     t.integer  "seat"
     t.integer  "price"
     t.datetime "departure"
     t.datetime "arrival"
     t.string   "company"
+    t.text     "description"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "destination_id"
   end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false

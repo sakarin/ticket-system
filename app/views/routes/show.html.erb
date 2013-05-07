@@ -17,12 +17,12 @@
         </tr>
 
 
-        <% @trip.bookings.each do |booking| %>
+        <% @route.bookings.each do |booking| %>
             <tr>
               <td><%= booking.id %></td>
               <td><%= link_to "#{booking.customer_name}", report_booking_path(booking) %></td>
               <td><%= booking.customer_telephone %></td>
-              <td><%= booking.trip_items.count(:id) %></td>
+              <td><%= booking.route_items.count(:id) %></td>
               <td><%= booking.pick_up_point %></td>
 
             </tr>
@@ -31,8 +31,8 @@
       </table>
 
       <div class="btn-with-navbar">
-        <%#= will_paginate @trip, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
-        <%= link_to "Back", trips_path, :class => "btn btn-success" %>
+        <%#= will_paginate @route, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
+        <%= link_to "Back", routes_path, :class => "btn btn-success" %>
       </div>
 
     </div>
@@ -43,7 +43,7 @@
   <div class="widget stacked widget-box">
     <div class="widget-header">
       <i class="icon-search"></i>
-      <h3>Trip Details</h3>
+      <h3>Route Details</h3>
     </div>
 
     <div class="widget-content">
@@ -51,32 +51,32 @@
 
             <p>
               <b>Route:</b>
-              <%= route_to_s @trip %>
+              <%= route_to_s @route %>
             </p>
 
             <p>
               <b>Car standard:</b>
-              <%= @trip.car_standard %>
+              <%= @route.car_standard %>
             </p>
 
             <p>
               <b>Departure:</b>
-              <%= I18n.l(@trip.departure, :format => :long) %>
+              <%= I18n.l(@route.departure, :format => :long) %>
             </p>
 
             <p>
               <b>Arrival:</b>
-              <%= I18n.l(@trip.arrival, :format => :long) %>
+              <%= I18n.l(@route.arrival, :format => :long) %>
             </p>
 
             <p>
               <b>Company:</b>
-              <%= @trip.company %>
+              <%= @route.company %>
             </p>
 
             <p>
               <b>Price:</b>
-              <%= @trip.price %>
+              <%= @route.price %>
             </p>
 
       </div>

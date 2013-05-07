@@ -9,3 +9,6 @@ jQuery ->
 
 #  $([name="btn_next"]).bind 'click', (event) =>
 #    if
+
+#  $('booking_price').change ->
+#     $('total_price')

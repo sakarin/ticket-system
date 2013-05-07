@@ -3,7 +3,7 @@
     <li class="selectedtab">
       <a href=""><span class="num">1</span> Search</a></li>
     <li  class="selectedtab">
-      <a href=""><span class="num">2</span> Select Trip</a>
+      <a href=""><span class="num">2</span> Select Route</a>
     </li>
 
     <li>
@@ -20,7 +20,7 @@
   <div class="widget stacked">
     <div class="widget-header">
       <i class="icon-tasks"></i>
-      <h3>Select Trip</h3>
+      <h3>Select Route</h3>
     </div>
 
     <div class="widget-content">
@@ -38,16 +38,16 @@
               <th>Company</th>
             </tr>
 
-            <% @departs.each do |trip| %>
+            <% @departs.each do |route| %>
                 <tr>
-                  <td><%= radio_button_tag(:trip_id, trip.id) %></td>
-                  <td><%= "#{trip.source.name} - #{trip.destination.name}" %></td>
-                  <td><%= trip.car_standard %></td>
-                  <td><%= trip.seat %></td>
-                  <td><%= trip.price %></td>
-                  <td><%= trip.departure %></td>
-                  <td><%= trip.arrival %></td>
-                  <td><%= trip.company %></td>
+                  <td><%= radio_button_tag(:route_id, route.id) %></td>
+                  <td><%= route.destination.name %></td>
+                  <td><%= route.car_standard %></td>
+                  <td><%= route.seat %></td>
+                  <td><%= route.price %></td>
+                  <td><%= route.departure %></td>
+                  <td><%= route.arrival %></td>
+                  <td><%= route.company %></td>
                 </tr>
             <% end %>
           </table>

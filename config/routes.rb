@@ -1,5 +1,7 @@
 TicketSystem::Application.routes.draw do
 
+  mount RedactorRails::Engine => '/redactor_rails'
+
   get "dashboard/index"
 
   #get "bookings/index"
@@ -15,11 +17,7 @@ TicketSystem::Application.routes.draw do
 
   resources :destinations
 
-
-  resources :sources
-
-
-  resources :trips
+  resources :routes
 
 
   authenticated :user do

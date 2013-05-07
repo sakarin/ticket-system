@@ -15,10 +15,10 @@ class BookingStepsController < ApplicationController
     case step
       when :confirm
         if params[:btn_next]
-          if @trip.can_booking(@booking.seat)
+          if @route.can_booking(@booking.seat)
             @booking.update_attributes(params[:booking])
             @booking.seat.times do |i|
-              @booking.trip_items.build
+              @booking.booking_items.build
             end
             @booking.complete
             render_wizard @booking
@@ -42,9 +42,9 @@ class BookingStepsController < ApplicationController
   def load_data
     begin
       @booking = Booking.find(session[:booking_id])
-      @trip = Trip.find(@booking.trip_id)
+      @route = Route.find(@booking.route_id)
     rescue
-      redirect_to search_bookings_path, alert:  "You Can't booking."
+      redirect_to search_bookings_path, alert:  "You Can't booking. load_data"
     end
 
   end
@@ -53,7 +53,7 @@ class BookingStepsController < ApplicationController
   def redirect_to_finish_wizard
     session[:booking_id] = {}
     session[:seat] = {}
-    session[:trip_id] = {}
+    session[:route_id] = {}
 
     redirect_to root_url, notice: "Thank you for booking."
   end
