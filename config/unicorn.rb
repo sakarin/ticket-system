@@ -9,7 +9,7 @@ worker_processes 4
 timeout 30
 
 
-listen 8080, :tcp_nopush => true
+#listen 8080, :tcp_nopush => true
 
 # Preload our app for more speed
 preload_app true
