@@ -15,7 +15,11 @@
       <%= f.input :car_standard %>
       <%= f.input :seat %>
       <%= f.input :price %>
-      <%= f.input :company %>
+
+      <% if current_user.has_role? :system %>
+        <%= f.association :company, label_method: :name, value_method: :id, include_blank: false %>
+      <% end %>
+
       <%= f.input :description, :as => :text, :input_html => { :class => 'redactor' } %>
     </div>
 

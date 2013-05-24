@@ -1,36 +1,66 @@
 <%= link_to "Ticket System", root_path, :class => 'brand' %>
 <% unless current_user.nil? -%>
 
-<ul class="nav">
-  <% if current_user.has_role? :admin %>
+    <ul class="nav">
+      <% if current_user.has_role? :system %>
 
-      <li><%= link_to_icon "Booking", bookings_path, {}, "icon-barcode" %></li>
-      <li><%= link_to_icon "Routes", routes_path, {}, "icon-road" %></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-print"></i>Report</a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "Booking History", report_bookings_path %></li>
+          <li><%= link_to_icon "Booking", bookings_path, {}, "icon-barcode" %></li>
+          <li><%= link_to_icon "Routes", routes_path, {}, "icon-road" %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-print"></i>Report</a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Booking History", report_bookings_path %></li>
 
-          <li><%= link_to "Destinations", destinations_path %></li>
-        </ul>
-      </li>
-      <li><%= link_to_icon 'Admin', users_path, {}, "icon-user" %></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i>Config</a>
-        <ul class="dropdown-menu">
+              <li><%= link_to "Report For Head Office", report_companies_path %></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i>Admin</a>
+            <ul class="dropdown-menu">
 
-          <li><%= link_to "Destinations", destinations_path %></li>
-        </ul>
-      </li>
+              <li><%= link_to_icon 'Users', users_path %></li>
+              <li><%= link_to_icon 'Invite User', new_user_invitation_path %></li>
+            </ul>
+          </li>
 
-  <% elsif current_user.has_role? :member %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i>Config</a>
+            <ul class="dropdown-menu">
 
-  <% elsif current_user.has_role? :agent %>
+              <li><%= link_to "Destinations", destinations_path %></li>
+              <li><%= link_to "Company", companies_path %></li>
 
-  <% else %>
+            </ul>
+          </li>
 
-  <% end %>
-</ul>
+      <% elsif current_user.has_role? :admin %>
+          <li><%= link_to_icon "Booking", bookings_path, {}, "icon-barcode" %></li>
+          <li><%= link_to_icon "Routes", routes_path, {}, "icon-road" %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-print"></i>Report</a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Booking History", report_bookings_path %></li>
+              <li><%= link_to "Head Office", report_companies_path %></li>
+            </ul>
+          </li>
+          <li><%= link_to_icon 'Admin', users_path, {}, "icon-user" %></li>
+
+
+      <% elsif current_user.has_role? :agent %>
+          <li><%= link_to_icon "Booking", bookings_path, {}, "icon-barcode" %></li>
+          <li><%= link_to_icon "Routes", routes_path, {}, "icon-road" %></li>
+
+          <li><%= link_to_icon 'Admin', agent_users_path, {}, "icon-user" %></li>
+
+      <% elsif current_user.has_role? :user %>
+          <li><%= link_to_icon "Booking", bookings_path, {}, "icon-barcode" %></li>
+          <li><%= link_to_icon "Routes", routes_path, {}, "icon-road" %></li>
+      <% else %>
+
+
+
+      <% end %>
+    </ul>
 
 
     <ul class="nav pull-right">
@@ -44,6 +74,11 @@
           <li class="">
             <%= link_to "Edit Profile", edit_user_registration_path %>
           </li>
+          <% unless current_user.has_role? :user %>
+              <% unless current_user.company.nil? %>
+                  <li><%= link_to "Edit Contact", edit_company_path(current_user.company.id) %></li>
+              <% end %>
+          <% end %>
           <li>
             <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
           </li>

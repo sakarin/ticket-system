@@ -14,8 +14,11 @@ class BookingsController < ApplicationController
   end
 
   def search
+    validate_form
+
     if session[:q].blank?
       @search = Route.search(params[:q])
+      session[:q] = params[:q]
     else
       @search = Route.search(session[:q])
     end
@@ -24,7 +27,7 @@ class BookingsController < ApplicationController
     unless params[:seat].nil?
       session[:seat] = params[:seat][:number]
     end
-    session[:q] = params[:q]
+
   end
 
   def create
@@ -41,7 +44,16 @@ class BookingsController < ApplicationController
     else
       redirect_to bookings_path
     end
+  end
 
+  private
+
+  def validate_form
+    if params[:q][:departure_at_casted_date_equals].blank? || params[:q][:route_type_cont].blank?
+      flash[:error] = "your search criteria is invalid. Please try using valid keywords"
+      redirect_to bookings_path
+      return
+    end
 
   end
 

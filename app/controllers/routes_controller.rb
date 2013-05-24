@@ -32,6 +32,9 @@ class RoutesController < ApplicationController
   # POST /routes.json
   def create
     @route = Route.new(params[:route])
+    unless current_user.company.nil?
+      @route.company_id = current_user.company.id
+    end
 
     respond_to do |format|
       if @route.save

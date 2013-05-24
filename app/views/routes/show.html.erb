@@ -22,7 +22,7 @@
               <td><%= booking.id %></td>
               <td><%= link_to "#{booking.customer_name}", report_booking_path(booking) %></td>
               <td><%= booking.customer_telephone %></td>
-              <td><%= booking.route_items.count(:id) %></td>
+              <td><%= booking.booking_items.count(:id) %></td>
               <td><%= booking.pick_up_point %></td>
 
             </tr>
@@ -71,7 +71,7 @@
 
             <p>
               <b>Company:</b>
-              <%= @route.company %>
+              <%= @route.company.name %>
             </p>
 
             <p>

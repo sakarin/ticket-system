@@ -1,4 +1,4 @@
-<div class="span12">
+<div class="span9">
   <div class="widget stacked">
     <div class="widget-header">
       <i class="icon-edit"></i>
@@ -7,52 +7,38 @@
     </div>
     <div class="widget-content">
 
-      <div class="clearboth"></div>
-
-      <%= search_form_for @search, :html => {:class => "f-filter"} do |f| %>
-          <div class="tab-content">
-            <div class="btn-group floatleft">
-
-              <%= link_to "Mini Bus to Airport", params.merge({:q => {:listing_type_does_not_equal => ''}}), {:class => 'btn active'} %>
-              <%= link_to "Tour", params.merge({:q => {:listing_type_cont => 'sale'}}), {:class => 'btn'} %>
-              <%= link_to "Bus Ticket", params.merge({:q => {:listing_type_cont => 'rent'}}), {:class => 'btn'} %>
-            </div>
-
-            <div class="floatright">
-              <%#= f.select(:source_id_cont, Source.all.collect { |source| [source.name, source.id] }, {:prompt => "search by scorce"}) %>
-              <%= f.select(:destination_id_cont, Destination.all.collect { |d| [d.name, d.id] }, {:prompt => "search by destination"}) %>
-
-            </div>
-          </div>
-      <% end %>
 
       <table class="blue">
         <tr>
           <th><%= sort_link @search, :number, "#ID" %></th>
           <th>Route</th>
-          <th>Car standard</th>
+          <th>Car</th>
           <th>Seat</th>
           <th><%= sort_link @search, :price, "Price" %></th>
           <th><%= sort_link @search, :departure, "Departure" %></th>
-          <th><%= sort_link @search, :arrival, "Arrival" %></th>
-          <th>Company</th>
+
+          <% if current_user.has_role? :system %>
+              <th>Company</th>
+          <% end %>
           <th></th>
         </tr>
 
         <% @routes.each do |route| %>
             <tr>
               <td><%= route.number %></td>
-              <td><%= link_to route.destination.name, route_path(route) %></td>
+              <td><%= route.destination.name %></td>
               <td><%= route.car_standard %></td>
               <td><%= route.seat %></td>
               <td><%= route.price %></td>
               <td><%= I18n.l(route.departure, :format => :long) %><%#= route.departure.to_s(:time) %></td>
-              <td><%= I18n.l(route.arrival, :format => :long) %></td>
-              <td><%= route.company %></td>
+
+              <% if current_user.has_role? :system %>
+                  <td><%= route.company.name %></td>
+              <% end %>
               <td>
                 <div class="route_actions">
                   <%= link_to t('toolbars.edit'), edit_route_path(route), :title => t('toolbars.edit'), :class => "act edit" %>
-                  <%= link_to t('toolbars.delete'), route_path(route), confirm: t('confirm.delete'), method: :delete, :title => t('toolbars.delete') , :class => "act delete" %>
+                  <%= link_to t('toolbars.delete'), route_path(route), confirm: t('confirm.delete'), method: :delete, :title => t('toolbars.delete'), :class => "act delete" %>
                 </div>
               </td>
 
@@ -67,6 +53,89 @@
     </div>
   </div>
 </div>
+
+<div class="span3">
+  <div class="widget stacked widget-box">
+    <div class="widget-header">
+      <i class="icon-search"></i>
+
+      <h3>Search Sources</h3>
+    </div>
+    <!-- /widget-header -->
+
+    <div class="widget-content">
+
+      <%= search_form_for @search, :html => {:class => ""} do |f| %>
+          <div class="control-group">
+            <label class="control-label" for="inputSource"> ID#</label>
+
+            <div class="controls">
+              <%= f.text_field :number_cont %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="inputSource"> Type</label>
+
+            <div class="controls">
+              <%= f.select(:route_type_cont, {"Airport" => "air", "Tour" => "tour", "Bus Ticket" => "bus"}, {:prompt => ""}) %>
+            </div>
+          </div>
+
+
+          <div class="control-group">
+            <label class="control-label" for="inputDestination"> Destination:</label>
+
+            <div class="controls">
+              <%= f.select(:destination_id_eq, Destination.all.collect { |d| [d.name, d.id] }, {:prompt => ""}) %>
+            </div>
+          </div>
+
+          <% if current_user.has_role? :system %>
+              <div class="control-group">
+                <label class="control-label" for="inputSource"> Company:</label>
+
+                <div class="controls">
+
+                  <%= f.text_field :company_name_cont %>
+                </div>
+              </div>
+
+          <% end %>
+
+
+          <div class="control-group">
+            <label class="control-label" for="inputDeparture"> Departure:</label>
+
+            <div class="controls">
+              <div id="datetimepicker1" class="input-append date">
+                <input data-format="dd/MM/yyyy" type="text" id="q_departure_at_casted_date_equals" name="q[departure_at_casted_date_equals]"/>
+                <span class="add-on">
+                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.button :search, :class => "btn" %>
+
+          </div>
+      <% end %>
+
+    </div>
+    <!-- /widget-content -->
+
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            language: 'pt-BR'
+        });
+    });
+</script>
 
 
 

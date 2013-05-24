@@ -33,7 +33,7 @@
 
       <div id="summary-ticket " class="span4">
         <div class="bs-docs-example">
-          <p>customer detail</p>
+          <h4>Customer Detail</h4>
 
           <p>name : <%= @booking.customer_name %></p>
 
@@ -44,7 +44,7 @@
 
 
         <div class="bs-docs-example">
-          <p>Payment</p>
+          <h4>Payment</h4>
 
           <p>Price Ticket: <%= "(#{@booking.price} x #{@booking.seat}) = #{@booking.price * @booking.seat}" %></p>
 
@@ -78,7 +78,7 @@
 
         <p>
           <b>Company:</b>
-          <%= @route.company %>
+          <%= @route.company.name %>
         </p>
         <p>
           <b>Seat:</b>

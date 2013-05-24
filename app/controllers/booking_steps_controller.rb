@@ -42,6 +42,8 @@ class BookingStepsController < ApplicationController
   def load_data
     begin
       @booking = Booking.find(session[:booking_id])
+      @booking.user_id = current_user.id
+
       @route = Route.find(@booking.route_id)
     rescue
       redirect_to search_bookings_path, alert:  "You Can't booking. load_data"

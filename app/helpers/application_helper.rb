@@ -38,4 +38,8 @@ module ApplicationHelper
     "#{route.destination.name}"
   end
 
+  def to_date_short(date)
+    I18n.l(Date.parse(date), :format => :short)
+  end
+
 end

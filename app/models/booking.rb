@@ -22,7 +22,9 @@
 
 class Booking < ActiveRecord::Base
   attr_accessible :customer_name, :customer_telephone, :number, :pick_up_point, :total, :user_id, :seat, :route_id
-  attr_accessible :no, :price, :seller, :completed_at
+  attr_accessible :no, :price, :completed_at
+
+
 
   belongs_to :user
 
@@ -46,7 +48,7 @@ class Booking < ActiveRecord::Base
   scope :pending, with_state('pending')
   scope :complete, with_state('complete')
 
-  validates_presence_of :customer_name, :no, :price, :seller, :on => :update
+  validates_presence_of :customer_name, :no, :price, :on => :update
 
 
   # shipment state machine (see http://github.com/pluginaweek/state_machine/tree/master for details)

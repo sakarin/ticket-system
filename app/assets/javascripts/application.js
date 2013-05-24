@@ -15,3 +15,4 @@
 //= require twitter/bootstrap
 //= require_tree .
 //= require redactor-rails
+//= require rails.validations.simple_form

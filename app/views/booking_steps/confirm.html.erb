@@ -33,7 +33,7 @@
 
           <%= f.input :no %>
           <%= f.input :price %>
-          <%= f.input :seller %>
+          <%#= f.input :seller %>
           <%= f.input :pick_up_point %>
 
           <div class="clearfix"></div>
@@ -87,7 +87,7 @@
 
             <p>
               <b>Company:</b>
-              <%= @route.company %>
+              <%= @route.company.name %>
             </p>
             <p>
               <b>Seat:</b>

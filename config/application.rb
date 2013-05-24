@@ -41,7 +41,7 @@ module TicketSystem
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
+    config.time_zone = 'Bangkok'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
@@ -75,5 +75,27 @@ module TicketSystem
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    c# Setup for production - deliveries, no errors raised
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = false
+    config.action_mailer.default :charset => "utf-8"
+
+    config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: "khaosanticket.com",
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: ENV["GMAIL_USERNAME"],
+      password: ENV["GMAIL_PASSWORD"]
+    }
+    
+    
+
+    config.assets.precompile += %w( *.css *.js *.css.erb )
+    config.assets.precompile += ["redactor-rails/*"]
+
   end
 end

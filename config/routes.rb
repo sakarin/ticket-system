@@ -1,5 +1,6 @@
 TicketSystem::Application.routes.draw do
 
+
   mount RedactorRails::Engine => '/redactor_rails'
 
   get "dashboard/index"
@@ -14,11 +15,12 @@ TicketSystem::Application.routes.draw do
 
   #match 'admin/purchase_orders/download', :to => "admin/purchase_orders#download"
   match 'report/bookings/:id/report', :to => "report/bookings#report"
+  match 'report/companies/search', :to => "report/companies#search"
 
   resources :destinations
 
   resources :routes
-
+  resources :companies
 
   authenticated :user do
     root :to => 'dashboard#index'
@@ -27,7 +29,11 @@ TicketSystem::Application.routes.draw do
 
 
   devise_for :users
-  resources :users
+  resources :users do
+    collection do
+      get :invite
+    end
+  end
 
   resources :bookings do
     collection do
@@ -36,14 +42,19 @@ TicketSystem::Application.routes.draw do
     end
   end
 
+  namespace :agent do
+    resources :users
+  end
+
+
   resources :booking_steps
 
   namespace :report do
     resources :bookings do
-      #collection do
-      #  match 'report' => 'bookings#report', :via => [:get], :as => :report
-      #end
+
     end
+    resources :companies
+
   end
 
 end

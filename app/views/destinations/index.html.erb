@@ -1,7 +1,8 @@
-<div class="span8">
+<div class="span9">
   <div class="widget stacked">
     <div class="widget-header">
       <i class="icon-tasks"></i>
+
       <h3>Listing destinations</h3>
     </div>
 
@@ -32,10 +33,11 @@
   </div>
 </div>
 
-<div class="span4">
+<div class="span3">
   <div class="widget stacked widget-box">
     <div class="widget-header">
       <i class="icon-search"></i>
+
       <h3>Search Sources</h3>
     </div>
     <!-- /widget-header -->
@@ -48,11 +50,10 @@
               <label class="control-label" for="source_name">Name</label>
 
               <div class="controls">
-                <div class="input-append">
-                  <%= f.text_field :name_cont %>
-                  <%= f.button :search, :class => "btn" %>
-                </div>
-
+                <%= f.text_field :name_cont %>
+              </div>
+              <div class="controls">
+                <%= f.button :search, :class => "btn" %>
               </div>
             </div>
           </div>

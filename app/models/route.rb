@@ -18,14 +18,15 @@
 #
 
 class Route < ActiveRecord::Base
-  attr_accessible :number, :destination_id, :arrival, :departure, :car_standard, :company, :price, :seat, :route_type, :description
+  attr_accessible :number, :destination_id, :arrival, :departure, :car_standard, :company_id, :price, :seat, :route_type, :description
 
+
+  belongs_to :company
 
   has_many :bookings, :conditions => "state LIKE 'complete'"
 
-  validates_presence_of :route_type, :destination, :car_standard, :seat, :price, :company
+  validates_presence_of :route_type, :destination, :car_standard, :seat, :price
 
-  #belongs_to :source
   belongs_to :destination
 
   before_validation :generate_number, :on => :create
@@ -55,8 +56,6 @@ class Route < ActiveRecord::Base
   ransacker :departure_at_casted do |parent|
     Arel::Nodes::SqlLiteral.new("date(routes.departure)")
   end
-
-
 
 
 end

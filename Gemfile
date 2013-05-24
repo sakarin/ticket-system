@@ -22,13 +22,17 @@ gem "devise", ">= 2.2.3"
 gem "devise_invitable", ">= 1.1.5"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
-gem "simple_form", ">= 2.0.4"
+
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "figaro", ">= 0.5.3"
 
 gem "carrierwave"
 gem "mini_magick"
 gem 'redactor-rails'
+
+gem "simple_form", ">= 2.0.4"
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 
 gem 'ransack', ">= 0.7.0"
@@ -45,5 +49,6 @@ group :development do
   #gem 'xray-rails'
   gem 'hirb'
   gem 'annotate'
+  gem 'thin'
 
 end

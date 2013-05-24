@@ -1,0 +1,31 @@
+<div class="span12" style="background-color: #FFFFFF;">
+  <div style="text-align: center"><h2><%= current_user.company.name %></h2></div>
+  <div class="clearfix"></div>
+  <div style="text-align: center"><h3>date from <%= to_date_short(session[:q][:route_departure_at_casted_gteq]) %> to <%= to_date_short session[:q][:route_departure_at_casted_lteq]  %> </h3></div>
+  <div class="clearfix"></div>
+
+  <table class="blue">
+    <tr>
+      <th>No.</th>
+      <th>Agent</th>
+      <th>Route</th>
+      <th>Ticket No.</th>
+      <th>Customer</th>
+      <th>PickUp</th>
+    </tr>
+
+    <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.number %></td>
+          <td><%= booking.route.company.name %></td>
+          <td><%= booking.route.destination.name %></td>
+          <td><%= booking.no %></td>
+          <td><%= booking.customer_name %></td>
+          <td><%= booking.pick_up_point %></td>
+        </tr>
+    <% end %>
+  </table>
+  <div class="btn-with-navbar">
+    <%= will_paginate @bookings, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
+  </div>
+</div>

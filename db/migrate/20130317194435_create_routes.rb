@@ -9,7 +9,7 @@ class CreateRoutes < ActiveRecord::Migration
       t.integer :price
       t.datetime :departure
       t.datetime :arrival
-      t.string :company
+      t.integer :company_id
       t.text :description
 
 

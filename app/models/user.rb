@@ -31,14 +31,49 @@
 class User < ActiveRecord::Base
   rolify
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :registerable
+  # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :confirmable,
+  devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :company_id
 
   has_many :bookings
+
+  belongs_to :company
+
+
+  scope :with_invited, lambda { |user| where(:invited_by_id => user.id) }
+  scope :with_company, lambda { |user| where(:company_id => user.company_id) }
+
+  after_create :assign_role
+
+  before_create :assign_company
+
+  def assign_role
+    return if self.invited_by_id.nil?
+    @user = User.find_by_id(self.invited_by_id)
+
+    if @user.has_role? :system
+      if self.company.company_type == "provider"
+        self.add_role :admin
+      else
+        self.add_role :agent
+      end
+    else
+      self.add_role :user
+    end
+
+  end
+
+  def assign_company
+    return if self.invited_by_id.nil?
+    @user = User.find_by_id(self.invited_by_id)
+    self.company_id = @user.company_id
+  end
+
+
 end
