@@ -2,7 +2,7 @@
   <ul class="processnav" style="margin-top: -10px;">
     <li class="selectedtab">
       <a href=""><span class="num">1</span> Search</a></li>
-    <li  class="selectedtab">
+    <li class="selectedtab">
       <a href=""><span class="num">2</span> Select Route</a>
     </li>
 
@@ -20,6 +20,7 @@
   <div class="widget stacked">
     <div class="widget-header">
       <i class="icon-tasks"></i>
+
       <h3>Select Route</h3>
     </div>
 
@@ -32,6 +33,7 @@
               <th>Route</th>
               <th>Car standard</th>
               <th>Seat</th>
+              <th>Available</th>
               <th>Price</th>
               <th>Departure</th>
               <th>Arrival</th>
@@ -39,16 +41,19 @@
             </tr>
 
             <% @departs.each do |route| %>
+                <% if route.seat - route.bookings.sum(:seat) > session[:seat].to_i  %>
                 <tr>
                   <td><%= radio_button_tag(:route_id, route.id) %></td>
                   <td><%= route.destination.name %></td>
                   <td><%= route.car_standard %></td>
                   <td><%= route.seat %></td>
+                  <td><%= get_available(route) %></td>
                   <td><%= route.price %></td>
                   <td><%= route.departure %></td>
                   <td><%= route.arrival %></td>
                   <td><%= route.company.name %></td>
                 </tr>
+                  <% end %>
             <% end %>
           </table>
 

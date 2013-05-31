@@ -42,4 +42,8 @@ module ApplicationHelper
     I18n.l(Date.parse(date), :format => :short)
   end
 
+  def get_available(route)
+    route.seat - route.bookings.sum(:seat)
+  end
+
 end

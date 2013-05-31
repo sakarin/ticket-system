@@ -15,16 +15,12 @@ class BookingStepsController < ApplicationController
     case step
       when :confirm
         if params[:btn_next]
-          if @route.can_booking(@booking.seat)
             @booking.update_attributes(params[:booking])
             @booking.seat.times do |i|
               @booking.booking_items.build
             end
             @booking.complete
             render_wizard @booking
-          else
-            redirect_to root_url, alert: "You Can't booking."
-          end
         else
           redirect_to search_bookings_path
         end

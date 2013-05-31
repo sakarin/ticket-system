@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     else
       @search = Route.search(session[:q])
     end
-    @departs = @search.result.paginate(:page => params[:page], :per_page => 20)
+    @departs = @search.result.paginate(:page => params[:page], :per_page => 100).order('departure ASC')
 
     unless params[:seat].nil?
       session[:seat] = params[:seat][:number]
@@ -34,12 +34,13 @@ class BookingsController < ApplicationController
 
     if params[:btn_next]
       @route = Route.find(params[:route_id])
+
       if @route.check_before_date
         @booking = Booking.create(:seat => session[:seat], :user_id => current_user.id, :route_id => params[:route_id])
         session[:booking_id] = @booking.id
         redirect_to booking_steps_path
       else
-        redirect_to :back, :alert => "before 3 H"
+        redirect_to bookings_path, :error => "You can't booking this route because booking before 3 H"
       end
     else
       redirect_to bookings_path
@@ -49,8 +50,12 @@ class BookingsController < ApplicationController
   private
 
   def validate_form
+    if params[:q].nil?
+      return
+    end
+
     if params[:q][:departure_at_casted_date_equals].blank? || params[:q][:route_type_cont].blank?
-      flash[:error] = "your search criteria is invalid. Please try using valid keywords"
+      flash[:error] = "Your search criteria is invalid. Please try using valid keywords"
       redirect_to bookings_path
       return
     end

@@ -45,6 +45,8 @@ gem 'will_paginate-bootstrap'
 gem 'wicked'
 gem 'state_machine'
 
+gem 'pg'
+
 
 group :development do
   # See http://thechangelog.com/xray-rails-reveals-which-files-are-being-rendered-in-your-view/

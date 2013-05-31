@@ -44,6 +44,10 @@ class Booking < ActiveRecord::Base
     self.number
   end
 
+  def self.available(seat)
+
+  end
+
   scope :with_state, lambda { |s| where(:state => s) }
   scope :pending, with_state('pending')
   scope :complete, with_state('complete')
