@@ -1,0 +1,36 @@
+<div class="span9">
+  <div class="widget stacked">
+    <div class="widget-header">
+      <i class="icon-tasks"></i>
+
+      <h3>Listing prototypes</h3>
+    </div>
+
+    <div class="widget-content">
+      <table class="blue">
+        <tr>
+          <th>Name</th>
+          <th></th>
+
+        </tr>
+
+        <% @prototypes.each do |prototype| %>
+            <tr>
+              <td><%= prototype.name %></td>
+              <td class="toolbars">
+                <%= link_to t('toolbars.edit'), edit_prototype_path(prototype), :title => t('toolbars.edit'), :class => "act edit" %>
+                <%= link_to t('toolbars.delete'), prototype, confirm: t('confirm.delete'), method: :delete, :title => t('toolbars.delete'), :class => "act delete" %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
+      <div class="btn-with-navbar">
+        <%= will_paginate @prototypes, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
+        <%= link_to "New Prototype", new_prototype_path, :class => "btn btn-success" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

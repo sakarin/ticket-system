@@ -27,6 +27,8 @@ gem "rolify", ">= 3.2.0"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "figaro", ">= 0.5.3"
 
+gem "brakeman", :require => false
+
 gem "carrierwave"
 gem "mini_magick"
 gem 'redactor-rails'
@@ -51,5 +53,8 @@ group :development do
   gem 'hirb'
   gem 'annotate'
   gem 'thin'
+
+  gem "better_errors"
+  gem "binding_of_caller"
 
 end

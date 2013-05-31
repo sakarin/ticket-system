@@ -19,8 +19,16 @@ TicketSystem::Application.routes.draw do
 
   resources :destinations
 
-  resources :routes
+  resources :routes do
+    collection do
+      match 'prototype' => 'routes#prototype', :via => [:get, :post], :as => :prototype
+      match 'clone' => 'routes#clone', :via => [:get, :post], :as => :clone
+
+    end
+  end
+
   resources :companies
+  resources :prototypes
 
   authenticated :user do
     root :to => 'dashboard#index'

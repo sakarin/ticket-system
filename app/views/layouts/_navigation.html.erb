@@ -1,11 +1,20 @@
-<%= link_to "Ticket System", root_path, :class => 'brand' %>
+<%= link_to "Khosan Ticket", root_path, :class => 'brand' %>
 <% unless current_user.nil? -%>
 
     <ul class="nav">
       <% if current_user.has_role? :system %>
 
           <li><%= link_to_icon "Booking", bookings_path, {}, "icon-barcode" %></li>
-          <li><%= link_to_icon "Routes", routes_path, {}, "icon-road" %></li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-road"></i>Routes</a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Routes", routes_path %></li>
+              <li><%= link_to "Prototypes", prototypes_path %></li>
+
+            </ul>
+          </li>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-print"></i>Report</a>
             <ul class="dropdown-menu">

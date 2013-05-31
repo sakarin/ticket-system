@@ -48,6 +48,7 @@
       <div class="btn-with-navbar">
         <%= will_paginate @routes, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
         <%= link_to "New Route", new_route_path, :class => "btn btn-success" %>
+        <%= link_to "New Route with Prototype", prototype_routes_path, :class => "btn btn-success" %>
       </div>
 
     </div>

@@ -20,6 +20,16 @@
         <%= f.association :company, label_method: :name, value_method: :id, include_blank: false %>
       <% end %>
 
+      <div class="control-group">
+        <label class="control-label" for="property_type"> Prototype :</label>
+
+        <div class="controls">
+
+          <%= f.collection_select(:prototype_id, Prototype.with_company(current_user), :id, :name, include_blank: true) %>
+        </div>
+
+      </div>
+
       <%= f.input :description, :as => :text, :input_html => { :class => 'redactor' } %>
     </div>
 

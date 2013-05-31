@@ -4,7 +4,7 @@ class RoutesController < ApplicationController
 
   def index
     @search = Route.search(params[:q])
-    @routes = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @routes = @search.result.paginate(:page => params[:page], :per_page => 20).order('departure DESC')
 
   end
 
@@ -32,9 +32,8 @@ class RoutesController < ApplicationController
   # POST /routes.json
   def create
     @route = Route.new(params[:route])
-    unless current_user.company.nil?
-      @route.company_id = current_user.company.id
-    end
+
+    @route.company_id = current_user.company.id unless current_user.company.nil?
 
     respond_to do |format|
       if @route.save
@@ -73,5 +72,22 @@ class RoutesController < ApplicationController
       format.html { redirect_to routes_url }
       format.json { head :no_content }
     end
+  end
+
+
+  def prototype
+    @route = Route.new
+
+  end
+
+  def clone
+    @prototype = Prototype.find(params[:route][:prototype_id])
+    @routes = @prototype.routes
+    @routes.each do |route|
+       route.duplicate(params[:route][:date])
+    end
+
+
+    redirect_to routes_path, notice: 'Route was successfully created.'
   end
 end
