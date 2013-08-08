@@ -1,0 +1,17 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+th:
+  helpers:
+    actions: "Actions"
+    links:
+      back: "ย้อนกลับ"
+      cancel: "ยกเลิก"
+      confirm: "คุณแน่ในหรือไม่?"
+      destroy: "ลบ"
+      new: "เพิ่ม"
+    titles:
+      edit: "แก้ไข"
+      save: "บันทึก"
+      new: "เพิ่ม"
+      delete: "ลบ"

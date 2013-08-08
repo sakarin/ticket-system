@@ -1,0 +1,78 @@
+<div class="search-form well">
+  <div class="">
+    <%= search_form_for @search, :html => {:class => ""} do |f| %>
+        <div class="row">
+          <div class="span3">
+            <div class="control-group">
+              <label class="control-label" for="inputSource">รห้สเส้นทาง</label>
+
+              <div class="controls">
+                <%= f.text_field :number_cont %>
+              </div>
+            </div>
+          </div>
+
+          <div class="span3">
+            <div class="control-group">
+              <label class="control-label" for="inputSource">ประเภทการเดินทาง</label>
+
+              <div class="controls">
+                <%= f.select(:route_type_cont, {"Airport" => "air", "Tour" => "tour", "Bus Ticket" => "bus"}, {:prompt => ""}) %>
+              </div>
+            </div>
+          </div>
+          <div class="span3">
+            <div class="control-group">
+              <label class="control-label" for="inputDestination"> ปลายทาง:</label>
+
+              <div class="controls">
+                <%= f.select(:destination_id_eq, Destination.all.collect { |d| [d.name, d.id] }, {:prompt => ""}) %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <% if current_user.has_role? :system %>
+              <div class="span3">
+                <div class="control-group">
+                  <label class="control-label" for="inputSource"> บริษัท:</label>
+
+                  <div class="controls">
+
+                    <%= f.text_field :company_name_cont %>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+
+
+          <div class="span3">
+            <div class="control-group">
+              <label class="control-label" for="inputDeparture"> วันที่เดินทาง:</label>
+
+              <div class="controls">
+                <div id="datetimepicker1" class="input-append date">
+                  <input data-format="dd/MM/yyyy" type="text" id="q_departure_at_casted_date_equals" name="q[departure_at_casted_date_equals]"/>
+                <span class="add-on">
+                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+          <%= f.button "ค้นหาเส้นทาง", :class => "btn btn-primary" %>
+
+
+
+    <% end %>
+  </div>
+</div>

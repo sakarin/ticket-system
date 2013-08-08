@@ -1,95 +1,74 @@
-<div class="span8">
-  <ul class="processnav" style="margin-top: -10px;">
-    <li class="selectedtab">
-      <a href=""><span class="num">1</span> Search</a></li>
-    <li>
-      <a href=""><span class="num">2</span> Select Route</a>
-    </li>
-
-    <li>
-      <a href=""><span class="num">3</span> Customer Detail</a>
-    </li>
-    <li class="last">
-    <a href=""><span class="num">4</span> Summary</a>
-    </li>
-  </ul>
-</div>
-
-<div class="span8">
-
-  <div class="widget stacked">
-    <div class="widget-header">
-      <i class="icon-tasks"></i>
-
-      <h3>Search Route</h3>
+<div class="span11">
+  <div class="title-group">
+    <div class="title">
+      <h3>
+        <div class="RG"></div>
+        ค้นหาการเดินทาง
+      </h3>
     </div>
+  </div>
 
-    <div class="widget-content">
+  <div class="well">
+    <%= search_form_for @search, url: search_bookings_path, method: :post, :html => {:class => ""} do |f| %>
 
-      <%#= render 'shared/step' %>
-
-      <%= search_form_for @search, url: search_bookings_path, method: :post, :html => {:class => ""} do |f| %>
-
-          <div class="form-inputs">
-            <div class="control-group">
-              <label class="control-label" for="inputSource"> Route Type:</label>
-              <label class="radio">
-                <%= radio_button("q", "route_type_cont", "airport") %>Mini Bus to Airport
-              </label>
-              <label class="radio">
-                <%= radio_button("q", "route_type_cont", "tour") %>Tour
-              </label>
-              <label class="radio">
-              <%= radio_button("q", "route_type_cont", "bus") %>Bus Ticket
+        <div class="form-inputs">
+          <div class="control-group">
+            <label class="control-label" for="inputSource">ประเภทการเดินทาง</label>
+            <label class="radio">
+              <%= radio_button("q", "route_type_cont", "airport") %>รถตู้ไปสนามบิน
             </label>
+            <label class="radio">
+              <%= radio_button("q", "route_type_cont", "tour") %>ทัวร์ท่องเที่ยว
+            </label>
+            <label class="radio">
+              <%= radio_button("q", "route_type_cont", "bus") %>ตั๋วรถทัวร์
+            </label>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="inputSource">เส้นทาง</label>
+
+            <div class="controls">
+              <%= f.collection_select(:destination_id_eq, Destination.order(:name), :id, :name, {include_blank: false}) %>
             </div>
+          </div>
 
-            <div class="control-group">
-              <label class="control-label" for="inputSource"> Destination:</label>
+          <div class="control-group">
+            <label class="control-label" for="inputDeparture">วันที่เดินทาง</label>
 
-              <div class="controls">
-                <%= f.collection_select(:destination_id_eq, Destination.order(:name), :id, :name, {include_blank: false}) %>
-              </div>
-            </div>
+            <div class="controls">
+              <div id="datetimepicker1" class="input-append date">
 
-            <div class="control-group">
-              <label class="control-label" for="inputDeparture"> Departure:</label>
-
-              <div class="controls">
-                <div id="datetimepicker1" class="input-append date">
-
-                  <input data-format="dd/MM/yyyy" type="text" id="q_departure_at_casted_date_equals" name="q[departure_at_casted_date_equals]"/>
+                <input data-format="dd/MM/yyyy" type="text" id="q_departure_at_casted_date_equals" name="q[departure_at_casted_date_equals]"/>
                 <span class="add-on">
                   <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
-                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="control-group">
-            <label class="control-label" for="inputSource"> Seat:</label>
+        <div class="control-group">
+          <label class="control-label" for="inputSource">จำนวนที่นั่ง</label>
 
-            <div class="controls">
-              <%= select(:seat, :number, (1..20)) %>
-            </div>
+          <div class="controls">
+            <%= select(:seat, :number, (1..20)) %>
           </div>
+        </div>
 
-          <div class="control-group">
-            <label class="control-label" for="inputSource"> Company:</label>
+        <div class="control-group">
+          <label class="control-label" for="inputSource">บริษัท</label>
 
-            <div class="controls">
-              <%= f.collection_select(:company_id_eq, Company.order(:name), :id, :name, {include_blank: true}) %>
-            </div>
+          <div class="controls">
+            <%= f.collection_select(:company_id_eq, Company.order(:name), :id, :name, {include_blank: true}) %>
           </div>
+        </div>
 
-          <div class="form-actions no-indent ">
-            <%= f.button :Search, :class => "btn btn-success floatleft" %>
-          </div>
+        <%= f.button "ค้นหาเส้นทาง", :class => "btn btn-success floatleft" %>
 
 
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
+
 

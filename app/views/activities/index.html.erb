@@ -1,0 +1,53 @@
+<div class="span11">
+  <div class="title-group">
+    <div class="title">
+
+      <h3>
+        <div class="RG"></div>
+        ข่าวสารและกิจกรรม
+      </h3>
+
+
+    </div>
+
+  </div>
+
+  <div class="input-append pull-right">
+    <%#= search_form_for @search, :html => {:class => ""} do |f| %>
+        <%#= f.text_field :title_cont %>
+        <%#= f.button "ค้นหา", :class => "btn" %>
+    <%# end %>
+  </div>
+
+
+  <table class="table table-bordered">
+    <tr>
+      <th>หัวข้อ</th>
+      <th>เนื้อหา</th>
+      <th>สถานะ</th>
+      <th>ประกาศเมื่อ</th>
+      <th></th>
+
+    </tr>
+
+    <% @activities.each do |activity| %>
+        <tr>
+          <td><%= link_to activity.title, activity_path(activity) %></td>
+          <td><%= activity.body.truncate(80).html_safe %></td>
+          <td><%= activity.publishing_at %></td>
+          <td><%= activity.status %></td>
+
+          <td class="toolbars">
+            <%= link_to t('toolbars.edit'), edit_activity_path(activity), :class => "btn btn-primary btn-mini" %>
+            <%= link_to t('toolbars.delete'), activity, method: :delete, data: {confirm: t('confirm.delete')}, :class => "btn btn-danger btn-mini" %>
+          </td>
+        </tr>
+    <% end %>
+  </table>
+  <div class="btn-with-navbar">
+    <%= will_paginate @activities, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
+    <%= link_to "เพิ่มกิจกรรม", new_activity_path, :class => "btn btn-success" %>
+  </div>
+
+
+</div>

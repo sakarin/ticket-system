@@ -1,66 +1,47 @@
-<div class="span9">
-  <div class="widget stacked">
-    <div class="widget-header">
-      <i class="icon-tasks"></i>
+<div class="span11">
+  <div class="title-group">
+    <div class="title">
 
-      <h3>Listing destinations</h3>
+      <h3>
+        <div class="RG"></div>
+        <%= t('activerecord.models.destination') %>
+      </h3>
     </div>
 
-    <div class="widget-content">
-      <table class="blue">
+  </div>
+
+
+
+  <table class="table table-bordered">
+    <tr>
+      <th><%= t('activerecord.attributes.destination.name') %></th>
+      <th></th>
+
+    </tr>
+
+    <% @destinations.each do |destination| %>
         <tr>
-          <th>Name</th>
-          <th></th>
-
+          <td><%= destination.name %></td>
+          <td class="toolbars">
+            <%= link_to t('toolbars.edit'), edit_destination_path(destination), :class => "btn btn-primary btn-mini" %>
+            <%= link_to t('toolbars.delete'), destination, method: :delete, data: {confirm: t('confirm.delete')}, :class => "btn btn-danger btn-mini" %>
+          </td>
         </tr>
+    <% end %>
+  </table>
+  <div class="btn-with-navbar">
+    <%= will_paginate @destinations, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
 
-        <% @destinations.each do |destination| %>
-            <tr>
-              <td><%= destination.name %></td>
-              <td class="toolbars">
-                <%= link_to t('toolbars.edit'), edit_destination_path(destination), :title => t('toolbars.edit'), :class => "act edit" %>
-                <%= link_to t('toolbars.delete'), destination, confirm: t('confirm.delete'), method: :delete, :title => t('toolbars.delete'), :class => "act delete" %>
-              </td>
-            </tr>
-        <% end %>
-      </table>
-      <div class="btn-with-navbar">
-        <%= will_paginate @destinations, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
-        <%= link_to "New Destination", new_destination_path, :class => "btn btn-success" %>
-      </div>
+    <%= link_to t('helpers.links.new') + t('activerecord.models.destination'), new_destination_path, :class => "btn btn-success" %>
 
-    </div>
-  </div>
-</div>
-
-<div class="span3">
-  <div class="widget stacked widget-box">
-    <div class="widget-header">
-      <i class="icon-search"></i>
-
-      <h3>Search Sources</h3>
-    </div>
-    <!-- /widget-header -->
-
-    <div class="widget-content">
-
+    <div class="input-append pull-right">
       <%= search_form_for @search, :html => {:class => ""} do |f| %>
-          <div class="form-inputs">
-            <div class="control-group source_name">
-              <label class="control-label" for="source_name">Name</label>
-
-              <div class="controls">
-                <%= f.text_field :name_cont %>
-              </div>
-              <div class="controls">
-                <%= f.button :search, :class => "btn" %>
-              </div>
-            </div>
-          </div>
+          <%= f.text_field :name_cont %>
+          <%= f.button t('button.search'), :class => "btn" %>
       <% end %>
-
     </div>
-    <!-- /widget-content -->
 
   </div>
 </div>
+
+

@@ -4,8 +4,8 @@
 
 
 jQuery ->
-  $('#print-ticket').bind 'click', (event) =>
-    doPrint()
+#  $('#print-ticket').bind 'click', (event) =>
+#    doPrint()
 
 #  $([name="btn_next"]).bind 'click', (event) =>
 #    if

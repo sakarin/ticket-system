@@ -1,7 +1,7 @@
 class DestinationsController < ApplicationController
   def index
     @search = Destination.search(params[:q])
-    @destinations = @search.result.paginate(:page => params[:page], :per_page => 10)
+    @destinations = @search.result.paginate(:page => params[:page], :per_page => 5)
 
   end
 
@@ -39,7 +39,7 @@ class DestinationsController < ApplicationController
 
     respond_to do |format|
       if @destination.save
-        format.html { redirect_to destinations_path, notice: 'Destination was successfully created.' }
+        format.html { redirect_to destinations_path, notice: I18n.t('activerecord.successful.messages.created', :model => @destination.class.model_name.human) }
         format.json { render json: @destination, status: :created, location: @destination }
       else
         format.html { render action: "new" }
@@ -55,7 +55,7 @@ class DestinationsController < ApplicationController
 
     respond_to do |format|
       if @destination.update_attributes(params[:destination])
-        format.html { redirect_to destinations_path, notice: 'Destination was successfully updated.' }
+        format.html { redirect_to destinations_path, notice: I18n.t('activerecord.successful.messages.updated', :model => @destination.class.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,47 +1,29 @@
-<div class="span8">
-  <ul class="processnav" style="margin-top: -10px;">
-    <li class="selectedtab">
-      <a href=""><span class="num">1</span> Search</a></li>
-    <li class="selectedtab">
-      <a href=""><span class="num">2</span> Select Route</a>
-    </li>
-
-    <li>
-      <a href=""><span class="num">3</span> Customer Detail</a>
-    </li>
-    <li class="last">
-      <a href=""><span class="num">4</span> Summary</a>
-    </li>
-  </ul>
-</div>
-
-<div class="span12">
-
-  <div class="widget stacked">
-    <div class="widget-header">
-      <i class="icon-tasks"></i>
-
-      <h3>Select Route</h3>
+<div class="span11">
+  <div class="title-group">
+    <div class="title">
+      <h3>
+        <div class="RG"></div>
+        ค้นหาการเดินทาง
+      </h3>
     </div>
+  </div>
+  <%= search_form_for @search, url: bookings_path, method: :post, :html => {:class => "f-filter"} do |f| %>
 
-    <div class="widget-content">
-      <%= search_form_for @search, url: bookings_path, method: :post, :html => {:class => "f-filter"} do |f| %>
+      <table class="table table-bordered">
+        <tr>
+          <th></th>
+          <th>เส้นทาง</th>
+          <th>มาตราฐานรถ</th>
+          <th>ที่นั่ง</th>
+          <th>ที่นั่งว่าง</th>
+          <th>ราคา</th>
+          <th>วันที่เดินทาง</th>
+          <th>วันที่ถึง</th>
+          <th>บริษัท</th>
+        </tr>
 
-          <table class="blue">
-            <tr>
-              <th></th>
-              <th>Route</th>
-              <th>Car standard</th>
-              <th>Seat</th>
-              <th>Available</th>
-              <th>Price</th>
-              <th>Departure</th>
-              <th>Arrival</th>
-              <th>Company</th>
-            </tr>
-
-            <% @departs.each do |route| %>
-                <% if route.seat - route.bookings.sum(:seat) > session[:seat].to_i  %>
+        <% @departs.each do |route| %>
+            <% if route.seat - route.bookings.sum(:seat) > session[:seat].to_i %>
                 <tr>
                   <td><%= radio_button_tag(:route_id, route.id) %></td>
                   <td><%= route.destination.name %></td>
@@ -49,19 +31,23 @@
                   <td><%= route.seat %></td>
                   <td><%= get_available(route) %></td>
                   <td><%= route.price %></td>
-                  <td><%= route.departure %></td>
-                  <td><%= route.arrival %></td>
+                  <td><%= I18n.l(route.departure, :format => :long) %></td>
+                  <td><%= I18n.l(route.arrival, :format => :long) %></td>
                   <td><%= route.company.name %></td>
                 </tr>
-                  <% end %>
             <% end %>
-          </table>
+        <% end %>
 
-          <div class="form-actions">
-            <%= f.submit :back, :class => "btn floatleft", :name => "btn_back" %>
-            <%= f.submit :next, :class => "btn btn-success floatright", :name => "btn_next" %>
-          </div>
-      <% end %>
-    </div>
-  </div>
+        <% if @departs.blank? %>
+            <tr>
+              <td colspan="9" style="text-align: center;">ไม่พบข้อมูล</td>
+            </tr>
+        <% end %>
+      </table>
+
+
+        <%= f.submit "ย้อนกลับ", :class => "btn  btn-inverse pull-left", :name => "btn_back" %>
+        <%= f.submit "ต่อไป", :class => "btn btn-primary pull-right", :name => "btn_next" %>
+
+  <% end %>
 </div>

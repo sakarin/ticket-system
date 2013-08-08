@@ -45,7 +45,7 @@ class PrototypesController < ApplicationController
 
     respond_to do |format|
       if @prototype.save
-        format.html { redirect_to @prototype, notice: 'Prototype was successfully created.' }
+        format.html { redirect_to activities_url, notice: I18n.t('activerecord.successful.messages.created', :model => @prototype.class.model_name.human) }
         format.json { render json: @prototype, status: :created, location: @prototype }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class PrototypesController < ApplicationController
 
     respond_to do |format|
       if @prototype.update_attributes(params[:prototype])
-        format.html { redirect_to @prototype, notice: 'Prototype was successfully updated.' }
+        format.html { redirect_to activities_url, notice: I18n.t('activerecord.successful.messages.updated', :model => @prototype.class.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

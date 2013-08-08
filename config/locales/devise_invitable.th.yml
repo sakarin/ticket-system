@@ -1,0 +1,16 @@
+th:
+  devise:
+    invitations:
+      send_instructions: 'อีเมลคำเชิญได้ถูกส่งไปยังอีเมล์ %{email}.'
+      invitation_token_invalid: 'token เชิญให้ไม่ถูกต้อง!'
+      updated: 'รหัสผ่านของคุณได้รับการกำหนดค่าเรียบร้อยแล้ว'
+      no_invitations_remaining: "No invitations remaining"
+      new:
+        header: "ส่งคำเชิญ"
+        submit_button: "ส่งคำเชิญ"
+      edit:
+        header: "ตั้งรหัสผ่านของคุณ"
+        submit_button: "ตั้งรหัสผ่านของคุณ"
+    mailer:
+      invitation_instructions:
+        subject: 'คำแนะนำเชิญ'

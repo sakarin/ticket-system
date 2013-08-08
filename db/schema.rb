@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530012824) do
+ActiveRecord::Schema.define(:version => 20130531061418) do
+
+  create_table "activities", :force => true do |t|
+    t.string   "title"
+    t.date     "publishing_at"
+    t.text     "body"
+    t.boolean  "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "booking_items", :force => true do |t|
     t.integer  "booking_id"

@@ -1,6 +1,9 @@
 TicketSystem::Application.routes.draw do
 
 
+  resources :activities
+
+
   mount RedactorRails::Engine => '/redactor_rails'
 
   get "dashboard/index"
@@ -29,6 +32,7 @@ TicketSystem::Application.routes.draw do
 
   resources :companies
   resources :prototypes
+  resources :activities
 
   authenticated :user do
     root :to => 'dashboard#index'

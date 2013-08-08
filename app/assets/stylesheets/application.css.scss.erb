@@ -13,172 +13,150 @@
  *= require redactor-rails
 */
 
-body {
-    background: #e9e9e9 url(<%= asset_path 'tiny_grid.png'  %>) repeat 0 0;
+
+@font-face {
+    font-family: 'DBOzoneX';
+    src: url(<%= asset_path 'db_Ozone.eot' %>);
+    src: url(<%= asset_path 'db_Ozone.eot?#iefix' %>) format('embedded-opentype'), url(<%= asset_path 'db_Ozone.ttf' %>) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 .content {
-    background-color: #eee;
+
+    /*padding: 20px 20px 0px 20px;*/
     padding: 20px;
-    margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-    -webkit-border-radius: 0 0 6px 6px;
-    -moz-border-radius: 0 0 6px 6px;
-    border-radius: 0 0 6px 6px;
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
-    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
-}
 
-#footer {
-    clear: both;
-    border-top: 1px dotted #AAA;
-    padding: 10px 0;
-    /*color: #FFF;*/
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* ----------------------------------------------------- */
-/* -----               process nav             --------- */
-/* ----------------------------------------------------- */
-ul.processnav {
-    font: 12px verdana, arial, sans-serif;
-    list-style-type: none;
-    width: 100%;
-    overflow: hidden;
-    margin-left: 0px;
-}
-
-ul.processnav li {
-    float: left;
-}
-
-ul.processnav li a {
-    color: #aaa;
-    white-space: nowrap;
-    position: relative;
-    line-height: 35px;
-    margin-right: 25px;
-    padding: 10px 20px 10px 0;
-    background: transparent url(<%= asset_path 'arrow-right.png' %>) center right no-repeat;
-
-}
-
-ul.processnav li a:hover {
-    color: #000;
-    text-decoration: none;
-    background: transparent url(<%= asset_path 'arrow-right-active.png' %>) center right no-repeat;
-}
-
-ul.processnav li.last a, ul.processnav li.last a:hover, ul.processnav li.selectedtab.last a {
-    margin-right: 0;
-    background: none;
-}
-
-ul.processnav li a span.num, ul.processnav li.disabledtab a:hover span.num {
-    padding: 10px 12px;
-    color: #aaa;
-    background: transparent url(<%= asset_path 'step-bg.png' %>) center center no-repeat;
-}
-
-ul.processnav li.selectedtab a {
-    background: transparent url(<%= asset_path 'arrow-right-active.png' %>) center right no-repeat;
-    color: #000;
-    text-decoration: none;
-}
-
-ul.processnav li.selectedtab a span.num, ul.processnav li a:hover span.num {
-    color: #fff;
-    background: transparent url(<%= asset_path 'step-bg-active.png' %>) center center no-repeat;
-}
-
-ul.processnav li.disabledtab a {
-    background: transparent url(<%= asset_path 'arrow-right.png' %>) center right no-repeat;
-    color: #aaa !important;
-    text-decoration: none !important;
-}
-
-ul.processnav li.last.disabledtab a {
-    background: none;
-}
-
-.floatright {
-    float: right;
-}
-
-.floatleft {
-    float: left;
-}
-
-.btn.middle {
-    position: absolute;
-    left: 520px;
-}
-
-.no-indent {
-    text-align: center;
-    padding-left: 20px;
-    position: relative;
-}
-
-.act {
-    display: inline-block;
-    text-indent: -999em;
-    width: 21px;
-    height: 21px;
-    background-image: url(<%= asset_path 'extranet-sprite.png' %>);
-    background-color: transparent;
-    background-repeat: no-repeat;
-    margin: 2px;
-}
-
-.delete {
-    background-position: 0 -21px;
-}
-
-.f-filter, .filter-box {
-    margin: 7px auto;
-    padding: 8px;
-    background-color: whiteSmoke;
+    min-height: 480px;
+    background: #fff;
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
 }
 
-.toolbars {
-    width: 60px;
+body {
+    /*background: url(<%= asset_path 'wallpapers/paper.jpg'%>) #f5efe6;*/
+    /*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
+    background-color: #333333!important;;
+
 }
 
-.header-toolbar {
+.head-title {
+    color: #dd4b39;
+
+}
+
+.title-group {
+    .title {
+        border-bottom: 1px solid #ebebeb;
+        h3 {
+            margin: 0 0px -3px;
+        }
+    }
+    padding-bottom: 15px;
+
+}
+
+.RG {
+    background: url(<%= asset_path 'activity_icons_4_915bbe063236330b.png' %>) no-repeat left top;
+    background-position: -16px -128px;
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    margin: 0 0px 3px 0;
+    vertical-align: middle;
+}
+
+
+#new_user{
+    width: 360px;
+    margin-right: 20px;
+    float: left;
+    border-right: 1px solid #ddd;
+    padding-right: 20px;
+}
+
+.avatar {
+    vertical-align: top;
+    width: 25px;
+    height: 25px;
+}
+
+.fb_login {
+    padding-left: 30px;
+    width: 500px;
+    float: left;
+}
+
+.login_with.facebook {
+    background: url(<%= asset_path 'facebook-button.png'%>) 0 0 no-repeat;
+    color: white;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 38px;
+    /*margin: 0 0 5px;*/
+    text-indent: 45px;
+    text-shadow: #000 0 -1px 0;
+    width: 200px;
+    text-decoration: none;
+    -webkit-text-stroke: 1px transparent;
+}
+
+.toolbar-back {
     vertical-align: bottom;
+    padding-left: 10px;
+    width: 50px;
 }
 
-.btn-with-navbar {
-    display: inline;
+.pull-bottom {
+    /*vertical-align: bottom;*/
+    padding-top: 10px;
 }
 
-.ticket-details li {
-    padding: 0.5em 0;
-    /*margin: 0 2em;*/
-    /*text-align: center;*/
-    border-bottom: 1px dotted #CCC;
+.bare {
+    margin-bottom: 20px;
 }
 
-.ticket-details {
-    /*border: 1px solid #DDD;*/
-    border-bottom: none;
+.fee .indent label {
+    float: none;
+    font-weight: normal;
+    font-size: 12px;
 }
 
-.ticket-details ul {
-    list-style: none;
-    margin: 0 0 0px 0px;
+.toolbars {
+    width: 80px;
+
 }
 
-.bs-docs-example {
-    position: relative;
-    margin: 15px 0;
-    padding: 15px 15px 15px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
+.brand {
+    font-family: "db_ozone_xregular", sans-serif;
+    font-weight: normal;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+    font-smooth: always;
+    font-size: 28px;
+}
+
+.search-form {
+    padding: 20px 20px 20px 20px!important;
+
+    display: none;
+}
+
+#search_btn {
+    font-family: "db_ozone_xregular", sans-serif;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+    font-smooth: always;
+   font-weight: normal;
+   font-size: 26px;
+    padding-left: 3px;
+}
+
+.search-link-right {
+    margin-top: 15px;
 }

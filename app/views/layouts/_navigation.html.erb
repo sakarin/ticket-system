@@ -4,40 +4,41 @@
     <ul class="nav">
       <% if current_user.has_role? :system %>
 
-          <li><%= link_to_icon "Booking", bookings_path, {}, "icon-barcode" %></li>
+          <li><%= link_to_icon t('navbar.booking'), bookings_path, {}, "icon-barcode" %></li>
 
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-road"></i>Routes</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-road"></i><%= t('navbar.routes.routes') %></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Routes", routes_path %></li>
-              <li><%= link_to "Prototypes", prototypes_path %></li>
+              <li><%= link_to t('navbar.routes.routes'), routes_path %></li>
+              <li><%= link_to t('navbar.routes.prototypes'), prototypes_path %></li>
 
             </ul>
           </li>
 
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-print"></i>Report</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-print"></i><%= t('navbar.report.report') %></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Booking History", report_bookings_path %></li>
+              <li><%= link_to t('navbar.report.booking_history'), report_bookings_path %></li>
 
-              <li><%= link_to "Report For Head Office", report_companies_path %></li>
+              <li><%= link_to t('navbar.report.report_for_head_office'), report_companies_path %></li>
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i>Admin</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i><%= t('navbar.admin.admin') %></a>
             <ul class="dropdown-menu">
 
-              <li><%= link_to_icon 'Users', users_path %></li>
-              <li><%= link_to_icon 'Invite User', new_user_invitation_path %></li>
+              <li><%= link_to_icon t('navbar.admin.users'), users_path %></li>
+              <li><%= link_to_icon t('navbar.admin.invite_user'), new_user_invitation_path %></li>
+              <li><%= link_to t('navbar.admin.activities'), activities_path %></li>
             </ul>
           </li>
 
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i>Config</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i><%= t('navbar.config.config') %></a>
             <ul class="dropdown-menu">
 
-              <li><%= link_to "Destinations", destinations_path %></li>
-              <li><%= link_to "Company", companies_path %></li>
+              <li><%= link_to t('navbar.config.destinations'), destinations_path %></li>
+              <li><%= link_to t('navbar.config.company'), companies_path %></li>
 
             </ul>
           </li>
@@ -49,6 +50,7 @@
             <ul class="dropdown-menu">
               <li><%= link_to "Routes", routes_path %></li>
               <li><%= link_to "Prototypes", prototypes_path %></li>
+
 
             </ul>
           </li>
@@ -89,15 +91,15 @@
         </a>
         <ul class="dropdown-menu">
           <li class="">
-            <%= link_to "Edit Profile", edit_user_registration_path %>
+            <%= link_to t('navbar.profile.edit_profile'), edit_user_registration_path %>
           </li>
           <% unless current_user.has_role? :user %>
               <% unless current_user.company.nil? %>
-                  <li><%= link_to "Edit Contact", edit_company_path(current_user.company.id) %></li>
+                  <li><%= link_to t('navbar.profile.edit_contact'), edit_company_path(current_user.company.id) %></li>
               <% end %>
           <% end %>
           <li>
-            <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+            <%= link_to t('navbar.profile.sign_out'), destroy_user_session_path, :method => :delete %>
           </li>
         </ul>
       </li>

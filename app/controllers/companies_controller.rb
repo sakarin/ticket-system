@@ -39,7 +39,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to companies_path, notice: 'Company was successfully created.' }
+        format.html { redirect_to companies_path, notice: I18n.t('activerecord.successful.messages.created', :model => @company.class.model_name.human) }
         format.json { render json: @company, status: :created, location: @company }
       else
         format.html { render action: "new" }
@@ -55,7 +55,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.update_attributes(params[:company])
-        format.html { redirect_to companies_path, notice: 'Company was successfully updated.' }
+        format.html { redirect_to companies_path, notice: I18n.t('activerecord.successful.messages.updated', :model => @company.class.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

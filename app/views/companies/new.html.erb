@@ -1,5 +1,14 @@
-<h1>New company</h1>
+<div class="span11">
+  <div class="title-group">
+    <div class="title">
+      <h3>
+        <div class="RG"></div>
+        <%= t('helpers.titles.new') + t('activerecord.models.company') %>
+      </h3>
+    </div>
+  </div>
+  <%= render 'form' %>
+</div>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', companies_path %>
+

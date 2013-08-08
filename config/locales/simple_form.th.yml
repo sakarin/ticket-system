@@ -1,0 +1,81 @@
+th:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'ต้องกรอก'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "กรุณาตรวจดูปัญหาที่ด้านล่าง"
+    # Labels and hints examples
+    # labels:
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+
+
+  activerecord:
+    successful:
+      messages:
+        created: "%{model} ได้รับการเพ่ิมเรียบร้อยแล้ว"
+        updated: "%{model} ได้รับการปรับปรุงเรียบร้อยแล้ว"
+
+    models:
+      destination: "เส้นทาง"
+      company: บริษัท
+      user: ผู้ใช้
+      activity: "ข่าวสาร"
+      prototype: เส้นทางต้นแบบ
+      route: เส้นทาง
+
+    attributes:
+      destination:
+        name: "ชื่อ"
+      company:
+        name: "ชื่อ"
+        address: ที่อยู่
+        tel: โทรศัพทย์
+        fax: "แฟกซ์"
+        company_type: ประเภท
+      user:
+        name: ชื่อ
+        email: อีเมล์
+        password: รหัสผ่าน
+        remember_me: จำรหัสผ่านฉันไว้
+        password_confirmation: ยืนยันรหัสผ่าน
+        current_password: รหัสผ่านปัจจุบัน
+      activity:
+        title: "หัวข้อ"
+        body: "เนื้อหา"
+        publishing_at: "ลงประกาศเมื่อ"
+        status: "เผยแพร่"
+      prototype:
+        name: เส้นทางต้นแบบ
+      route:
+        number: รหัส
+        route_type: ประเภทรถ
+        car_standard: มาตราฐานรถ
+        destination_id: เส้นทาง
+        seat: จำนวนที่นั่ง
+        price: ราคา
+        departure: วันที่เดินทาง
+        arrival: วันที่ถึง
+        company_id: บริษัท
+        description: รายละเอียด
+
+
+
+
+
+

@@ -2,7 +2,7 @@ class BookingStepsController < ApplicationController
   before_filter :load_data
 
 
-  include Wicked::Wizard
+  include Wicked::Wizard::Translated
   #steps :select_seat, :confirm, :summary
   steps :confirm, :summary
 

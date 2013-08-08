@@ -37,7 +37,7 @@ class RoutesController < ApplicationController
 
     respond_to do |format|
       if @route.save
-        format.html { redirect_to routes_path, notice: 'Route was successfully created.' }
+        format.html { redirect_to routes_path, notice: I18n.t('activerecord.successful.messages.created', :model => @route.class.model_name.human) }
         format.json { render json: @route, status: :created, location: @route }
       else
         format.html { render action: "new" }
@@ -53,7 +53,7 @@ class RoutesController < ApplicationController
 
     respond_to do |format|
       if @route.update_attributes(params[:route])
-        format.html { redirect_to routes_path, notice: 'Route was successfully updated.' }
+        format.html { redirect_to routes_path, notice: I18n.t('activerecord.successful.messages.updated', :model => @route.class.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -170,6 +170,7 @@ end
     :create => "สร้าง%{model}",
     :update => "ปรับปรุง%{model}",
     :submit => "บันทึก%{model}"
+
   }
 },
 

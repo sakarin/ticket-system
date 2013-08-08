@@ -9,7 +9,7 @@
 
       <% if current_user.has_role? :system %>
           <div class="control-group string optional company_fax">
-            <label class="string optional control-label" for="company_fax">Company Type</label>
+            <label class="string optional control-label" for="company_fax"><%= t('activerecord.attributes.company.company_type') %></label>
 
             <div class="controls">
               <%= f.select :company_type, {"Provider" => "provider", "Agent" => "agent"}, include_blank: false %>

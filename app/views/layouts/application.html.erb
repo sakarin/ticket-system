@@ -11,35 +11,31 @@
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
 
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </div>
-    <div id="main" role="main">
+  <div class="navbar navbar-masthead navbar-fixed-top">
+    <div class="navbar-inner">
       <div class="container">
+        <%= render 'layouts/navigation' %>
+      </div>
+    </div>
+  </div>
 
-           <div class="row">
-              <div class="span12">
-                <%= render 'layouts/messages' %>
-              </div>
-
-
-              <%= yield %>
-            </div>
-
-          <footer>
-
-          </footer>
-
-        <div id="footer">
-          <p>Copyright © 2012 Khao San Ticket , All Rights Reserved</p>
-
+  <div id="main" role="main">
+    <div class="container">
+      <div class="content">
+        <div class="row">
+          <div class="span11">
+            <div class="span11">
+              <%= render 'layouts/messages' %>
+              ​</div>
+            <%= yield %>
+          </div>
         </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+        <footer>
+          <%= yield :scripts %>
+        </footer>
+      </div>
+    </div> <!--! end of .container -->
+  </div> <!--! end of #main -->
   </body>
 </html>

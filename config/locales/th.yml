@@ -1,0 +1,68 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+th:
+  hello: "Hello world"
+  date:
+    picker_format: "dd/mm/yyyy"
+    formats:
+      input: "%d/%m/%Y"
+      default: "%d %b %Y"
+      long: "%A %e %B %Y"
+
+
+
+  toolbars:
+    edit: "แก้ไข"
+    delete: "ลบ"
+  confirm:
+    delete: "ต้องการลบข้อมูล ?"
+  notice:
+    delete_confirm: "ต้องการลบข้อมูล ?"
+
+  navbar:
+    booking: "จำหน่ายตั๋ว"
+    routes:
+      routes: "เส้นทาง"
+      prototypes: "เส้นทางต้นแบบ"
+    report:
+      report: "รายงาน"
+      booking_history: "ประวัติการจำหน่ายตั๋ว"
+      report_for_head_office: "รายงานสำหรับบริษัท"
+    admin:
+      admin: "ผู้ดูแล"
+      users: "รายการผู้ใช้"
+      invite_user: "เพิ่มผู้ใช้"
+      activities: "ข่าวประชาสัมพันธ์"
+    config:
+      config: "ตั้งค่า"
+      destinations: "เส้นทาง"
+      company: "บริษัท"
+    profile:
+      edit_profile: "แก้ไขข้อมูลส่วนตัว"
+      edit_contact: "แก้ไขข้อมูลการติดต่อ"
+      sign_out: "ออกจากระบบ"
+
+  list: รายการ
+  edit: ​แก้ไข
+  back: "ย้อนกลับ"
+  new: เพิ่ม
+
+  button:
+    new: "เพิ่ม"
+    search: "ค้นหา"
+
+  search: "ค้นหา"
+
+  devise:
+    sign_in: เข้าสู่ระบบ
+    sign_up: สมัครสมาชิก
+    new_password: ลืมรหัสผ่าน
+    new_confirmation: ไม่ได้รับการยืนยันคำแนะนำ?
+
+
+
+
+
+
+
