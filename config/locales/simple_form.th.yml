@@ -38,6 +38,7 @@ th:
       activity: "ข่าวสาร"
       prototype: เส้นทางต้นแบบ
       route: เส้นทาง
+      booking: จองตั๋ว
 
     attributes:
       destination:
@@ -73,6 +74,15 @@ th:
         arrival: วันที่ถึง
         company_id: บริษัท
         description: รายละเอียด
+      booking:
+        customer_name: ชื่อลูกค้า
+        customer_telephone: เบอร์โทร
+        number: หมายเลยตั๋ว
+        pick_up_point: จุดขึ้นรถ
+        no: หมายเลยตั๋ว
+        price: ราคาหน้าตั๋ว
+
+
 
 
 

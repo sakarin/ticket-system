@@ -1,36 +1,36 @@
 <%= simple_form_for(@route) do |f| %>
     <%= f.error_notification %>
+    <div class="well">
+      <div class="form-inputs">
 
-    <div class="form-inputs">
+        <%= f.input :route_type, :as => :radio_buttons,
+                    :collection => [["airport", 'Mini Bus to Airport'], ["tour", 'Tour'], ["bus", 'Bus Ticket']],
+                    :label_method => :last,
+                    :value_method => :first %>
+        <%= f.association :destination %>
 
-      <%= f.input :route_type, :as => :radio_buttons,
-                  :collection => [["airport", 'Mini Bus to Airport'], ["tour", 'Tour'], ["bus", 'Bus Ticket']],
-                  :label_method => :last,
-                  :value_method => :first %>
-      <%#= f.association :source %>
-      <%= f.association :destination %>
+        <%= f.input :departure %>
+        <%= f.input :arrival %>
+        <%= f.input :car_standard %>
+        <%= f.input :seat %>
+        <%= f.input :price %>
 
-      <%= f.input :departure %>
-      <%= f.input :arrival %>
-      <%= f.input :car_standard %>
-      <%= f.input :seat %>
-      <%= f.input :price %>
+        <% if current_user.has_role? :system %>
+            <%= f.association :company, label_method: :name, value_method: :id, include_blank: false %>
+        <% end %>
 
-      <% if current_user.has_role? :system %>
-        <%= f.association :company, label_method: :name, value_method: :id, include_blank: false %>
-      <% end %>
+        <div class="control-group">
+          <label class="control-label" for="property_type"> เส้นทางต้นแบบ :</label>
 
-      <div class="control-group">
-        <label class="control-label" for="property_type"> เส้นทางต้นแบบ :</label>
+          <div class="controls">
 
-        <div class="controls">
+            <%= f.collection_select(:prototype_id, Prototype.with_company(current_user), :id, :name, include_blank: true) %>
+          </div>
 
-          <%= f.collection_select(:prototype_id, Prototype.with_company(current_user), :id, :name, include_blank: true) %>
         </div>
 
+        <%= f.input :description, :as => :text, :input_html => {:class => 'redactor'} %>
       </div>
-
-      <%= f.input :description, :as => :text, :input_html => { :class => 'redactor' } %>
     </div>
 
     <div class="form-actions">
@@ -38,6 +38,7 @@
       <%= link_to 'ย้อนกลับ', routes_path, :class => "btn" %>
     </div>
 <% end %>
+
 
 <script type="text/javascript">
     $(function () {

@@ -39,7 +39,7 @@ module ApplicationHelper
   end
 
   def to_date_short(date)
-    I18n.l(Date.parse(date), :format => :short)
+    I18n.l(Date.parse(date), :format => :default)
   end
 
   def get_available(route)

@@ -9,6 +9,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+require 'pdfkit'
+
 module TicketSystem
   class Application < Rails::Application
 
@@ -91,6 +93,8 @@ module TicketSystem
       user_name: ENV["GMAIL_USERNAME"],
       password: ENV["GMAIL_PASSWORD"]
     }
+
+
     
     
 

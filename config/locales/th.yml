@@ -60,6 +60,11 @@ th:
     new_password: ลืมรหัสผ่าน
     new_confirmation: ไม่ได้รับการยืนยันคำแนะนำ?
 
+  errors:
+    messages:
+      invalid:
+        criteria: "เงื่อนไขการค้นหาของคุณไม่ถูกต้อง โปรดลองใช้คำหลักที่ถูกต้อง"
+
 
 
 

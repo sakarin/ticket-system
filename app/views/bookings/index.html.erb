@@ -15,7 +15,7 @@
           <div class="control-group">
             <label class="control-label" for="inputSource">ประเภทการเดินทาง</label>
             <label class="radio">
-              <%= radio_button("q", "route_type_cont", "airport") %>รถตู้ไปสนามบิน
+              <%= radio_button("q", "route_type_cont", "airport", options = { checked: true}) %>รถตู้ไปสนามบิน
             </label>
             <label class="radio">
               <%= radio_button("q", "route_type_cont", "tour") %>ทัวร์ท่องเที่ยว

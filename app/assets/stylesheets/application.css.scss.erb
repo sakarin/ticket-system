@@ -13,6 +13,27 @@
  *= require redactor-rails
 */
 
+@media print {
+    body {
+        background-color: #FFF;
+    }
+
+    #container {
+        width: auto;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    #line_items {
+        page-break-before: always;
+    }
+
+    #pdf_link {
+        display: none;
+    }
+}
+
 
 @font-face {
     font-family: 'DBOzoneX';
@@ -159,4 +180,35 @@ body {
 
 .search-link-right {
     margin-top: 15px;
+}
+
+.ticket-prict-total {
+    font-weight: bold;
+    font-size: 14px;
+
+}
+.ticket-header {
+    font-weight: bold;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.ticket-lable {
+    font-weight: bold;
+}
+
+.ticket-title {
+    width: 770px ;
+}
+
+.ticket-passenger-box {
+    min-height: 260px!important;
+}
+
+.pull-center {
+    text-align: center;
+}
+
+#print-area {
+   background-color: #FFFFFF;
 }

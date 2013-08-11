@@ -1,142 +1,15 @@
-<div class="span8">
-  <ul class="processnav" style="margin-top: -10px;">
-    <li class="selectedtab">
-      <a href=""><span class="num">1</span> Search</a></li>
-    <li class="selectedtab">
-      <a href=""><span class="num">2</span> Select Route</a>
-    </li>
-
-    <li class="selectedtab">
-      <a href=""><span class="num">3</span> Customer Detail</a>
-    </li>
-    <li class="last selectedtab">
-      <a href=""><span class="num">4</span> Summary</a>
-    </li>
-  </ul>
-</div>
-
-<div class="span12">
-
-  <div class="widget stacked">
-    <div class="widget-header">
-      <i class="icon-tasks"></i>
-
-      <h3>Summary</h3>
-    </div>
-
-    <div class="widget-content" id="printArea">
-      <div class="span8">
-        <h4>Travel Itinerary</h4>  <div><%= I18n.l(@booking.completed_at, :format => :long) %></div>
-        <h4>Booking ID : <%= @booking.number %></h4>
-      </div>
-
-
-      <div id="summary-ticket " class="span4">
-        <div class="bs-docs-example">
-          <h4>Customer Detail</h4>
-
-          <p>name : <%= @booking.customer_name %></p>
-
-          <p>telephone : <%= @booking.customer_telephone %></p>
-
-          <p>PickUp Point : <%= @booking.pick_up_point %></p>
-        </div>
-
-
-        <div class="bs-docs-example">
-          <h4>Payment</h4>
-
-          <p>Price Ticket: <%= "(#{@booking.price} x #{@booking.seat}) = #{@booking.price * @booking.seat}" %></p>
-
-          <p>Price Total : <%= "#{@booking.price * @booking.seat}" %></p>
-        </div>
-      </div>
-
-      <div class="bs-docs-example  span4">
-
-        <p><b>Travel</b></p>
-
-        <p>
-          <b>Route:</b>
-          <%= route_to_s @route %>
-        </p>
-
-        <p>
-          <b>Departure:</b>
-          <%= I18n.l(@route.departure, :format => :long) %>
-        </p>
-
-        <p>
-          <b>Arrival:</b>
-          <%= I18n.l(@route.arrival, :format => :long) %>
-        </p>
-
-        <p>
-          <b>Car standard:</b>
-          <%= @route.car_standard %>
-        </p>
-
-        <p>
-          <b>Company:</b>
-          <%= @route.company.name %>
-        </p>
-        <p>
-          <b>Seat:</b>
-          <span id="booking_seat"><%= @booking.seat %></span>
-        </p>
-        <p>
-          <b>Price:</b>
-          <%= @booking.price %>
-        </p>
-      </div>
-
-      <div class="span8">
-        condition
-      </div>
-
-
-      <div class="clearfix"></div>
-
-      <%= simple_form_for @booking, url: wizard_path do |f| %>
-
-          <%= yield f %>
-
-
-
-          <div class="form-actions">
-            <%= link_to "Print Ticket", "#", :id => "print-ticket", :class => "btn middle btn-primary" %>
-            <% unless step == :summary %>
-                <%= f.submit :back, :class => "btn floatleft", :name => "btn_back" %>
-            <% end %>
-
-            <%= f.submit :Success, :class => "btn btn-success floatright", :name => "btn_next" %>
-          </div>
-      <% end %>
-
-
-    </div>
-
+<div class="span11">
+  <div id="print-area">
+  <%= render 'shared/ticket' %>
   </div>
+  <%= simple_form_for @booking, url: wizard_path do |f| %>
+      <%= yield f %>
+      <div class="form-actions">
+        <%= link_to_icon " พิมพ์ตั๋ว", "#", {:id => "print-ticket", :class => "btn btn-large btn-primary"}, "icon-print" %>
+        <%= f.submit "เสร็จสิ้น", :class => "btn btn-success btn-large pull-right", :name => "btn_next" %>
+      </div>
+  <% end %>
 
 </div>
-
-<script type="text/javascript">
-    function doPrint() {
-        pr = window.open("about:blank", "print", "location=no,menubar=yes,status=no,toolbar=no,scrollbars=1,width=640,height=480");
-        c = "<html><head>";
-        c += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">";
-        c += "<style type='text/css'>";
-        c += "body,td,th {font-family: Tahoma,Verdana;font-size: 13px;}";
-        c += "</style>";
-        c += "<title>BusTicket.in.th</title>";
-        c += "</head><body style='margin:0px;'>";
-        c += document.getElementById('printArea').innerHTML;
-        c += "</body></html>";
-        pr.document.open();
-        pr.document.write(c);
-        pr.document.close();
-        pr.window.print();
-    }
-</script>
 
 

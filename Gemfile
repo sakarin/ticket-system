@@ -44,10 +44,13 @@ gem 'ransack', ">= 0.7.0"
 gem "squeel", ">= 1.0.13"
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-gem 'wicked'
+gem 'wicked', ">=1.0.0"
 gem 'state_machine'
 
 gem 'pg'
+
+gem "pdfkit"
+gem "wkhtmltopdf-binary"
 
 
 group :development do

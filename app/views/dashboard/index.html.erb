@@ -1,35 +1,30 @@
-<div class="span12">
-  <div class="widget widget-nopad stacked">
-
-    <div class="widget-header">
-      <i class="icon-list-alt"></i>
-
-      <h3>Recent News</h3>
-    </div>
-    <!-- /widget-header -->
-
-    <div class="widget-content">
-
-      <br>
-      <ul class="news-items">
-        <% @activities.each do |activity| %>
-            <li>
-
-              <div class="news-item-detail">
-                <%= link_to activity.title.truncate(100), activity_path(activity) %>
-
-                <p class="news-item-preview"><%= activity.body.truncate(300).html_safe %></p>
-              </div>
-
-              <div class="news-item-date">
-                <span class="news-item-day"><%= activity.publishing_at %></span>
-
-              </div>
-            </li>
-        <% end %>
-
-      </ul>
+<div class="span11">
+  <div class="title-group">
+    <div class="title">
+       <h3>
+        <div class="RG"></div>
+        ข่าวสาร
+      </h3>
 
     </div>
   </div>
+  <ul class="news-items">
+    <% @activities.each do |activity| %>
+        <li>
+
+          <div class="news-item-detail">
+            <%= link_to activity.title.truncate(100), activity_path(activity) %>
+
+            <p class="news-item-preview"><%= activity.body.truncate(300).html_safe %></p>
+          </div>
+
+          <div class="news-item-date">
+            <span class="news-item-day">วันที่ประกาศ <%= I18n.l(activity.publishing_at, :format => :long) %></span>
+
+          </div>
+        </li>
+    <% end %>
+
+  </ul>
+
 </div>

@@ -1,88 +1,51 @@
-<div class="span9">
-  <div class="widget stacked">
-    <div class="widget-header">
-      <i class="icon-tasks"></i>
-      <h3>Listing bookings</h3>
 
-    </div>
 
-    <div class="widget-content">
-      <table class="blue">
-        <tr>
-          <th>#ID</th>
-          <th>Customer Name</th>
-          <th>Booking Date</th>
-          <th></th>
-        </tr>
-
-        <% @bookings.each do |booking| %>
-            <tr>
-              <td><%= booking.number %></td>
-              <td><%= link_to "#{booking.customer_name}", report_booking_path(booking) %></td>
-              <td><%= I18n.l(booking.created_at, :format => :long) %></td>
-              <td class="toolbars">
-
-              </td>
-
-            </tr>
-        <% end %>
-      </table>
-
-      <div class="btn-with-navbar">
-        <%= will_paginate @bookings, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
-
+<div class="span11">
+  <div class="title-group">
+    <div class="title">
+      <div class="search-link-right pull-right">
+        <a href="#" id="search_btn">ค้นหา</a>
       </div>
 
+      <h3>
+        <div class="RG"></div>
+        ประวัติการจองตั๋ว
+      </h3>
+
     </div>
+  </div>
+
+  <%= render 'search_form' %>
+
+  <table class="table table-bordered">
+    <tr>
+      <th>หมายเลข</th>
+      <th>ชื่อลูกค้า</th>
+      <th>วันที่จองตั๋ว</th>
+      <th></th>
+    </tr>
+
+    <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.number %></td>
+
+          <td><%= link_to "#{booking.customer_name}", report_booking_path(booking), :target => '_blank' %></td>
+          <td><%= I18n.l(booking.created_at, :format => :long) %></td>
+          <td class="toolbars">
+
+          </td>
+
+        </tr>
+    <% end %>
+  </table>
+
+  <div class="btn-with-navbar">
+    <%= will_paginate @bookings, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
 
   </div>
+
 </div>
 
-<div class="span3">
-  <div class="widget stacked widget-box">
-    <div class="widget-header">
-      <i class="icon-search"></i>
-      <h3>Search Booking</h3>
-    </div>
-    <!-- /widget-header -->
-
-    <div class="widget-content">
-
-      <%= search_form_for @search, url: report_bookings_path, :html => {:class => ""} do |f| %>
-          <div class="form-inputs">
-            <div class="control-group booking_name">
-
-              <label class="control-label" for="booking_id">#Number</label>
-              <div class="controls">
-                <%= f.text_field :number_cont %>
-              </div>
-
-              <label class="control-label" for="booking_id">Customer Name</label>
-              <div class="controls">
-                <%= f.text_field :customer_name_cont %>
-              </div>
-
-              <label class="control-label" for="booking_id">Booking Date</label>
-              <div class="controls">
-                <div id="datetimepicker1" class="input-append date">
-                  <input data-format="dd/MM/yyyy" type="text" id="q_created_at_casted_date_equals" name="q[created_at_casted_date_equals]"></input>
-                  <%#= f.text_field :created_at_eq %>
-                <span class="add-on">
-                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                </span>
-                </div>
-              </div>
-
-              <%= f.button :search, :class => "btn btn-success" %>
-            </div>
-          </div>
-      <% end %>
-
-    </div>
-    <!-- /widget-content -->
-
-  </div>
-</div>
 
 <script type="text/javascript">
     $(function () {

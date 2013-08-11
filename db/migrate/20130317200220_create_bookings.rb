@@ -4,7 +4,7 @@ class CreateBookings < ActiveRecord::Migration
       t.integer :route_id
       t.string :number
       t.string :total
-      t.string :pick_up_point
+      t.text :pick_up_point
       t.string :customer_name
       t.string :customer_telephone
       t.integer :seat

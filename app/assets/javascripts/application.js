@@ -17,3 +17,4 @@
 //= require_tree .
 //= require redactor-rails
 //= require rails.validations.simple_form
+//= require jquery_print_element

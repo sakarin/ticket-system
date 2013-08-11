@@ -9,11 +9,5 @@ class Report::BookingsController < ApplicationController
     @route = @booking.route
   end
 
-  def report
 
-
-    @booking = Booking.find(params[:id])
-    @route = @booking.route
-    render layout: 'report'
-  end
 end

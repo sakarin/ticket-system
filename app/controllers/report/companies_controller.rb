@@ -17,7 +17,7 @@ class Report::CompaniesController < ApplicationController
 
   def validate_form
     if params[:q][:route_departure_at_casted_gteq].blank? || params[:q][:route_departure_at_casted_lteq].blank?
-      flash[:error] = "your search criteria is invalid. Please try using valid keywords"
+      flash[:error] = t('errors.messages.invalid.criteria')
       redirect_to report_companies_path
       return
     end

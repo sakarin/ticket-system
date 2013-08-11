@@ -1,45 +1,47 @@
-<div class="span12">
-  <div class="widget stacked">
-    <div class="widget-header">
-      <i class="icon-edit"></i>
-      <h3>New Route With Prototype</h3>
+<div class="span11">
+  <div class="title-group">
+    <div class="title">
+      <h3>
+        <div class="RG"></div>
+        สร้างเส้นทางต้นแบบ
+      </h3>
     </div>
+  </div>
+  <%= simple_form_for(@route, url: clone_routes_path, method: :post) do |f| %>
+      <%= f.error_notification %>
+      <div class="well">
 
-    <div class="widget-content">
-      <%= simple_form_for(@route, url: clone_routes_path, method: :post) do |f| %>
-          <%= f.error_notification %>
+        <div class="control-group">
+          <label class="control-label" for="property_type">ต้นแบบ</label>
 
-          <div class="control-group">
-            <label class="control-label" for="property_type"> Prototype :</label>
-
-            <div class="controls">
-              <%= f.collection_select(:prototype_id, Prototype.with_company(current_user), :id, :name, include_blank: false) %>
-            </div>
+          <div class="controls">
+            <%= f.collection_select(:prototype_id, Prototype.with_company(current_user), :id, :name, include_blank: false) %>
           </div>
+        </div>
 
-          <div class="control-group">
-            <label class="control-label" for="inputDeparture"> Departure:</label>
+        <div class="control-group">
+          <label class="control-label" for="inputDeparture">วันที่เดินทาง</label>
 
-            <div class="controls">
-              <div id="datetimepicker1" class="input-append date">
+          <div class="controls">
+            <div id="datetimepicker1" class="input-append date">
 
-                <input data-format="dd/MM/yyyy" type="text" id="route_date" name="route[date]"/>
+              <input data-format="dd/MM/yyyy" type="text" id="route_date" name="route[date]"/>
                 <span class="add-on">
                   <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
-              </div>
             </div>
           </div>
+        </div>
+      </div>
 
 
-          <div class="form-actions">
-            <%= f.button :submit, :class => "btn btn-success" %>
-            <%= link_to 'Back', destinations_path, :class => "btn btn-inverse" %>
-          </div>
-      <% end %>
-    </div>
-  </div>
+      <div class="form-actions">
+        <%= f.button :submit, :class => "btn btn-success" %>
+        <%= link_to 'ย้อนกลับ', destinations_path, :class => "btn btn-inverse" %>
+      </div>
+  <% end %>
 </div>
+
 
 
 

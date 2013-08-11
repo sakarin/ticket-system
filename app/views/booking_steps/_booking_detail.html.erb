@@ -1,0 +1,45 @@
+<div class="title">
+  <h3>รายละเอียดการเดินทาง</h3>
+</div>
+<div class="well">
+  <ul>
+    <li>
+      <b>เส้นทาง :</b>
+      <%= route_to_s @route %>
+    </li>
+    <li>
+      <b>มาตราฐานรถ :</b>
+      <%= @route.car_standard %>
+    </li>
+    <li>
+      <b>วันที่เดินทาง :</b>
+      <%= I18n.l(@route.departure, :format => :long) %>
+    </li>
+    <li>
+      <b>วันที่ถึง :</b>
+      <%= I18n.l(@route.arrival, :format => :long) %>
+    </li>
+    <li>
+      <b>บริษัท :</b>
+      <%= @route.company.name %>
+    </li>
+    <li>
+      <b>จำนวนที่นั่ง :</b>
+      <span id="booking_seat"><%= @booking.seat %></span>
+    </li>
+    <li>
+      <b>ราคาตั๋ว :</b>
+      <%= @route.price %>  บาท
+
+
+    </li>
+    <li>
+      <h3>
+        <b>ราคาทั้งหมด :</b>
+        <span id="total_price">0</span> บาท
+
+      </h3>
+    </li>
+
+  </ul>
+</div>

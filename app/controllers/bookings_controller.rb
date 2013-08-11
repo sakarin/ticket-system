@@ -47,6 +47,11 @@ class BookingsController < ApplicationController
     end
   end
 
+  def print
+
+    render 'shared/ticket'
+  end
+
   private
 
   def validate_form

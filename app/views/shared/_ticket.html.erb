@@ -1,0 +1,91 @@
+<div class="title-group">
+  <div class="title">
+    <h3>
+      Travel Itinerary
+    </h3>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="span8">
+    <div class="well ticket-title">
+
+      <p><span class="ticket-lable">Booking Date : </span><%= @booking.completed_at.to_formatted_s(:long) %></p>
+
+      <p><span class="ticket-lable">Booking ID : </span><%= @booking.number %></p>
+
+      <p><span class="ticket-lable">Company No : </span><%= @booking.no %></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+
+
+  <div class="well span3">
+
+    <div class="ticket-header">Travel</div>
+
+
+    <p>
+      <b>Route :</b>
+      <%= route_to_s @route %>
+    </p>
+
+    <p>
+      <b>Departure :</b>
+      <%= @route.departure.to_formatted_s(:long) %>
+    </p>
+
+    <p>
+      <b>Arrival :</b>
+      <%= @route.arrival.to_formatted_s(:long) %>
+    </p>
+
+    <p>
+      <b>Car Standard :</b>
+      <%= @route.car_standard %>
+    </p>
+
+    <p>
+      <b>Company :</b>
+      <%= @route.company.name %>
+    </p>
+
+    <p>
+      <b>Seat :</b>
+      <span id="booking_seat"><%= @booking.seat %></span>
+    </p>
+
+    <p>
+      <b>Price Ticket :</b>
+      <%= @booking.price %> Bath
+    </p>
+
+    <div class="ticket-prict-total">Price Total
+      : <%= "(#{@booking.price} x #{@booking.seat}) = #{@booking.price * @booking.seat}" %> Bath
+    </div>
+  </div>
+
+  <div class="span3">
+    <div class="well ticket-passenger-box">
+      <div class="bs-docs-example">
+        <div class="ticket-header">Passenger</div>
+
+        <p><b>Name :</b>  <%= @booking.customer_name %></p>
+
+        <p><b>Telephone :</b>  <%= @booking.customer_telephone %></p>
+
+        <p><b>PickUp Point :</b><br>  <%= @booking.pick_up_point %></p>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+

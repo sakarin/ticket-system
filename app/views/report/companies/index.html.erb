@@ -1,77 +1,81 @@
-<div class="span12">
+<div class="span11">
+  <div class="title-group">
+    <div class="title">
 
-  <div class="widget stacked">
-    <div class="widget-header">
-      <i class="icon-tasks"></i>
+      <h3>
+        <div class="RG"></div>
+        รายงานสำหรับบริษัท
+      </h3>
 
-      <h3><%= link_to "Head Office Report", report_companies_path %></h3>
+
     </div>
-
-    <div class="widget-content">
-
-      <%= search_form_for @search, url: report_companies_search_path, method: :post, :html => {:class => ""} do |f| %>
-
-          <div class="form-inputs">
+  </div>
 
 
-            <div class="control-group">
-              <label class="control-label" for="inputDeparture"> Date From:</label>
+  <%= search_form_for @search, url: report_companies_search_path, method: :post, :html => {:class => ""} do |f| %>
 
-              <div class="controls">
-                <div id="datetimepicker1" class="input-append date">
-                  <input data-format="dd/MM/yyyy" type="text" id="q_route_departure_at_casted_gteq" name="q[route_departure_at_casted_gteq]"/>
+      <div class="well">
+        <div class="form-inputs ">
+
+
+          <div class="control-group">
+            <label class="control-label" for="inputDeparture">ตั้งแต่วันที่ </label>
+
+            <div class="controls">
+              <div id="datetimepicker1" class="input-append date">
+                <input data-format="dd/MM/yyyy" type="text" id="q_route_departure_at_casted_gteq" name="q[route_departure_at_casted_gteq]"/>
                   <span class="add-on">
                   <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
-                </div>
               </div>
             </div>
           </div>
-          <div class="control-group">
-            <label class="control-label" for="inputDeparture"> Date To:</label>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputDeparture">ถึงวันที่</label>
 
-            <div class="controls">
-              <div id="datetimepicker2" class="input-append date">
-                <input data-format="dd/MM/yyyy" type="text" id="q_route_departure_at_casted_lteq" name="q[route_departure_at_casted_lteq]"/>
+          <div class="controls">
+            <div id="datetimepicker2" class="input-append date">
+              <input data-format="dd/MM/yyyy" type="text" id="q_route_departure_at_casted_lteq" name="q[route_departure_at_casted_lteq]"/>
 
                 <span class="add-on">
                   <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
                 </span>
-              </div>
             </div>
           </div>
+        </div>
 
 
-          <div class="control-group">
-            <label class="control-label" for="inputSource"> Agent:</label>
+        <div class="control-group">
+          <label class="control-label" for="inputSource">ตำแทนจำหน่าย</label>
 
-            <div class="controls">
-              <%= f.collection_select(:user_company_id_eq, Company.companies_act_as_agent.order(:name), :id, :name, {include_blank: true}) %>
-            </div>
+          <div class="controls">
+            <%= f.collection_select(:user_company_id_eq, Company.companies_act_as_agent.order(:name), :id, :name, {include_blank: true}) %>
           </div>
+        </div>
 
-          <div class="control-group">
-            <label class="control-label" for="inputSource"> Destination:</label>
+        <div class="control-group">
+          <label class="control-label" for="inputSource">เส้นทาง</label>
 
-            <div class="controls">
-              <%= f.collection_select(:route_destination_id_eq, Destination.order(:name), :id, :name, {include_blank: true}) %>
-            </div>
+          <div class="controls">
+            <%#= f.collection_select(:route_destination_id_eq, Destination.order(:name), :id, :name, {include_blank: true}) %>
+            <%= f.collection_select(:route_destination_id_eq, Destination.order(:name), :id, :name, {include_blank: true}) %>
           </div>
+        </div>
 
-          <div class="control-group">
-            <label class="control-label" for="inputSource"> Seller:</label>
+        <div class="control-group">
+          <label class="control-label" for="inputSource">ผู้ขาย</label>
 
-            <div class="controls">
-              <%= f.collection_select(:user_id_eq, User.with_company(current_user), :id, :name, {include_blank: true}) %>
-            </div>
+          <div class="controls">
+            <%= f.collection_select(:user_id_eq, User.with_company(current_user), :id, :name, {include_blank: true}) %>
           </div>
+        </div>
 
-          <div class="form-actions no-indent ">
-            <%= f.button :Search, :class => "btn btn-success floatleft" %>
-          </div>
+        <%= f.button "ค้นหา", :class => "btn btn-success" %>
+
+      </div>
 
 
-      <% end %>
-    </div>
-  </div>
+  <% end %>
 </div>
+

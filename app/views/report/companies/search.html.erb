@@ -1,30 +1,42 @@
-<div class="span12" style="background-color: #FFFFFF;">
-  <div style="text-align: center"><h2><%= current_user.company.name %></h2></div>
-  <div class="clearfix"></div>
-  <div style="text-align: center"><h3>date from <%= to_date_short(session[:q][:route_departure_at_casted_gteq]) %> to <%= to_date_short session[:q][:route_departure_at_casted_lteq]  %> </h3></div>
-  <div class="clearfix"></div>
+<div class="span11">
+  <div id="print-area">
+    <div style="text-align: center; font-weight: bold;">
+      <p><%= current_user.company.name %> </P>
 
-  <table class="blue">
-    <tr>
-      <th>No.</th>
-      <th>Agent</th>
-      <th>Route</th>
-      <th>Ticket No.</th>
-      <th>Customer</th>
-      <th>PickUp</th>
-    </tr>
+      <p> วันที่ <%= to_date_short(session[:q][:route_departure_at_casted_gteq]) %>
+        ถึง <%= to_date_short session[:q][:route_departure_at_casted_lteq] %> </p>
 
-    <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.number %></td>
-          <td><%= booking.route.company.name %></td>
-          <td><%= booking.route.destination.name %></td>
-          <td><%= booking.no %></td>
-          <td><%= booking.customer_name %></td>
-          <td><%= booking.pick_up_point %></td>
-        </tr>
-    <% end %>
-  </table>
+    </div>
+
+
+    <table class="table table-bordered">
+      <tr>
+        <th>รหัส</th>
+        <th>ตัวแทนจำหน่าย</th>
+        <th>เส้นทาง</th>
+        <th>หมายเลขตั๋ว</th>
+        <th>ลูกค้า</th>
+        <th>จุดรับลูกค้า</th>
+      </tr>
+
+      <% @bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.number %></td>
+            <td><%= booking.route.company.name %></td>
+            <td><%= booking.route.destination.name %></td>
+            <td><%= booking.no %></td>
+            <td><%= booking.customer_name %></td>
+            <td><%= booking.pick_up_point %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="form-actions pull-center">
+    <%= link_to_icon " ย้อนกลับ", report_companies_path, {:class => "btn btn-large btn-inverse"}, "icon-arrow-left" %>
+    <%= link_to_icon " พิมพ์ตั๋ว", "#", {:id => "print-ticket", :class => "btn btn-large btn-primary"}, "icon-print" %>
+  </div>
+
   <div class="btn-with-navbar">
     <%= will_paginate @bookings, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
   </div>

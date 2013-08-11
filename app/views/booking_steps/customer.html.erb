@@ -1,0 +1,48 @@
+<div class="span11">
+  <div class="title-group">
+    <div class="title">
+      <h3>
+        <div class="RG"></div>
+        กรอกรายละเอียดลูกค้า
+      </h3>
+    </div>
+  </div>
+
+  <%= simple_form_for @booking, url: wizard_path do |f| %>
+      <div class="row">
+        <div class="span5">
+          <%= render 'booking_detail' %>
+        </div>
+
+        <div class="span6">
+          <div class="title">
+            <h3>
+              ข้อมูลลูกค้า
+            </h3>
+          </div>
+          <div class="well">
+            <div class="form-horizontal2">
+              <%= f.input :customer_name %>
+              <%= f.input :customer_telephone %>
+              <%= f.input :no %>
+              <%= f.input :price, input_html: {id: "booking_customer_price"} %>
+              <%= f.input :pick_up_point, :as => :text, input_html: {class: 'pick_up_point', :cols => 800, :rows => 3} %>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div class="form-actions">
+        <% unless step == :summary %>
+            <%= f.submit "ย้อนกลับ", :class => "btn  btn-inverse pull-left", :name => "btn_back" %>
+        <% end %>
+
+        <%= f.submit "ต่อไป", :class => "btn btn-primary pull-right", :name => "btn_next", :confirm => "คุณแน่ว่าข้อมูลถูกต้องและต้องการจองตั๋วนี้ใช่หรือไม่ ?" %>
+      </div>
+  <% end %>
+
+</div>
+

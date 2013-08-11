@@ -8,14 +8,6 @@ TicketSystem::Application.routes.draw do
 
   get "dashboard/index"
 
-  #get "bookings/index"
-
-  get "booking_step/select_seat"
-
-  get "booking_step/comfirm"
-
-  get "booking_step/summary"
-
   #match 'admin/purchase_orders/download', :to => "admin/purchase_orders#download"
   match 'report/bookings/:id/report', :to => "report/bookings#report"
   match 'report/companies/search', :to => "report/companies#search"
@@ -50,7 +42,7 @@ TicketSystem::Application.routes.draw do
   resources :bookings do
     collection do
       match 'search' => 'bookings#search', :via => [:get, :post], :as => :search
-
+      get 'print'
     end
   end
 
