@@ -40,8 +40,6 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-datepicker-rails (1.1.1.6)
       railties (>= 3.0)
-    bootstrap-google-sass (0.0.4)
-      sass (~> 3.2)
     brakeman (1.9.5)
       erubis (~> 2.6)
       fastercsv (~> 1.5)
@@ -291,7 +289,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-datepicker-rails
-  bootstrap-google-sass (>= 0.0.4)
   brakeman
   cancan (>= 1.6.8)
   capistrano
