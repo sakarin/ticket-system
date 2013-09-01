@@ -12,39 +12,17 @@
   </div>
 
 
-  <%= search_form_for @search, url: report_companies_search_path, method: :post, :html => {:class => ""} do |f| %>
+  <%= simple_form_for @search, url: report_companies_search_path, :html => {:class => ""} do |f| %>
 
       <div class="well">
+
         <div class="form-inputs ">
-
-
-          <div class="control-group">
-            <label class="control-label" for="inputDeparture">ตั้งแต่วันที่ </label>
-
-            <div class="controls">
-              <div id="datetimepicker1" class="input-append date">
-                <input data-format="dd/MM/yyyy" type="text" id="q_route_departure_at_casted_gteq" name="q[route_departure_at_casted_gteq]"/>
-                  <span class="add-on">
-                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="inputDeparture">ถึงวันที่</label>
-
-          <div class="controls">
-            <div id="datetimepicker2" class="input-append date">
-              <input data-format="dd/MM/yyyy" type="text" id="q_route_departure_at_casted_lteq" name="q[route_departure_at_casted_lteq]"/>
-
-                <span class="add-on">
-                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                </span>
-            </div>
-          </div>
+            <%= f.input :route_departure_at_casted_gteq, :as => :custom_datepicker, :label => t('date.date_from'), :input_html => {:class => 'custom_datepicker_selector'} %>
         </div>
 
+        <div class="form-inputs ">
+            <%= f.input :route_departure_at_casted_lteq, :as => :custom_datepicker, :label => t('date.date_to'), :input_html => {:class => 'custom_datepicker_selector'} %>
+        </div>
 
         <div class="control-group">
           <label class="control-label" for="inputSource">ตำแทนจำหน่าย</label>
@@ -71,7 +49,7 @@
           </div>
         </div>
 
-        <%= f.button "ค้นหา", :class => "btn btn-success" %>
+        <%= f.submit "ค้นหา", :class => "btn btn-success" %>
 
       </div>
 

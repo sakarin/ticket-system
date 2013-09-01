@@ -37,7 +37,7 @@ describe DestinationsController do
   describe "GET index" do
     it "assigns all destinations as @destinations" do
       destination = Destination.create! valid_attributes
-      get :index, {}, valid_session
+      get :index2, {}, valid_session
       assigns(:destinations).should eq([destination])
     end
   end

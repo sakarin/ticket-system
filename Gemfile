@@ -48,9 +48,9 @@ gem 'wicked', ">=1.0.0"
 gem 'state_machine'
 
 gem 'pg'
+gem "haml-rails"
 
-gem "pdfkit"
-gem "wkhtmltopdf-binary"
+gem 'bootstrap-datepicker-rails'
 
 
 group :development do

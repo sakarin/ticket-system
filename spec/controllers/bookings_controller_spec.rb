@@ -37,7 +37,7 @@ describe BookingsController do
   describe "GET index" do
     it "assigns all bookings as @bookings" do
       booking = Booking.create! valid_attributes
-      get :index, {}, valid_session
+      get :index2, {}, valid_session
       assigns(:bookings).should eq([booking])
     end
   end

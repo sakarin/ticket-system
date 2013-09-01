@@ -1,59 +1,55 @@
-# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
-
 th:
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed. You are now signed in."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: คุณได้ยืนยันบัญชีของคุณเรียบร้อยแล้ว ขณะนี้คุณสามารถเข้าสู่ระบบได้
+      send_instructions: คุณจะได้รับอีเมล์แนะนำวิธีการยืนยันบัญชีภายในไม่ไม่ช้า
+      send_paranoid_instructions: หากอีเมล์ของคุณมีอยู่ในฐานข้อมูลในระบบแล้ว คุณจะได้รับอีเมล์แนะนำวิธีการยืนยันบัญชีภายในไม่ช้า
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account was not activated yet."
-      invalid: "Invalid email or password."
-      invalid_token: "Invalid authentication token."
-      locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      already_authenticated: คุณเข้าสู่ระบบแล้ว
+      inactive: บัญชีของคุณยังไม่ถูกเปิดใช้งาน
+      invalid: อีเมล์หรือรหัสผ่านไม่ถูกต้อง
+      invalid_token: การพิสูจน์ไม่ถูกต้อง
+      locked: บัญชีของคุณถูกล็อก
+      not_found_in_database: 
+      timeout: หน้าเว็บเกินระยะเวลาที่กำหนด กรุณาเข้าสู่ระบบอีกครั้งเพื่อดำเนินการต่อ
+      unauthenticated: คุณต้องเข้าสู่ระบบหรือลงทะเบียนก่อดำเนินการต่อ
+      unconfirmed: คุณต้องยืนยันบัญชีก่อนดำเนินการต่อ
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: คำแนะนำการยืนยัน
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: คำแนะนำการตั้งค่ารหัสผ่าน
       unlock_instructions:
-        subject: "Unlock Instructions"
+        subject: คำแนะนำการปลดล็อก
     omniauth_callbacks:
-      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
-      success: "Successfully authenticated from %{kind} account."
+      failure: ไม่สามารถยืนยันตัวคุณจาก %{kind} เพราะ "%{reason}".
+      success: ยืนยันตัวตนจาก %{kind} บัญชี.
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password was changed successfully. You are now signed in."
-      updated_not_active: "Your password was changed successfully."
+      no_token: คุณไม่สามารถเข้าถึงหน้าเว็บนี้โดยไม่ได้คลิกลิงค์จากอีเมล์ตั้งค่ารหัสผ่าน หากคุณคลิกลิงค์จากอีเมล์ตั้งค่ารหัสผ่านกรุณาตรวจสอบให้แน่ใจว่า URL ถูกต้องตามที่เราให้ไว้
+      send_instructions: คุณจะได้รับอีเมล์แนะนำการตั้งค่ารหัสผ่านในไม่ช้า
+      send_paranoid_instructions: หากอีเมล์ของคุณมีอยู่ในฐานข้อมูลในระบบแล้ว  คุณจะได้รับลิงค์กูรหัสผ่านคืนในไม่ช้า
+      updated: รหัสผ่านของคุณเปลี่ยนแปลงเรียบร้อยแล้ว ขณะนี้คุณสามารถเข้าสู่ระบบโดยใช้รหัสผ่านใหม่ได้
+      updated_not_active: รหัสผ่านของคุณเปลี่ยนแปลงเรียบร้อยแล้ว
     registrations:
-      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-      signed_up: "Welcome! You have signed up successfully."
-      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
-      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
-      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
-      updated: "You updated your account successfully."
+      destroyed: ลาก่อน! บัญชีของคุณถูกยกเลิกเรียบร้อยแล้ว เราหวังว่าจะได้พบคุณใหม่ในไม่ช้า
+      signed_up: ยินดีต้อนรับ!คุณลงทะเบียนเรียบร้อยแล้ว
+      signed_up_but_inactive: คุณลงทะเบียนเรียบร้อยแล้ว แต่การเข้าสู่ระบบล้มเหลวเนื่องจากบัญชีของคุณยังไม่ได้เปิดใช้งาน
+      signed_up_but_locked: คุณลงทะเบียนเรียบร้อยแล้ว แต่การเข้าสู่ระบบล้มเหลวเนื่องจากบัญชีของคุณล็อก
+      signed_up_but_unconfirmed: ข้อความพร้องลิงค์สำหรับยืนยันได้ส่งไปยังอีเมล์ของคุณแล้ว กรุณาคลิกลิงค์นั้นเพื่อเปิดใช้งานบัญชี
+      update_needs_confirmation: คุณได้อัพเดทบัญชีของคุณเรียบร้อยแล้ว แต่คุณต้องทำการยืนยันอีเมล์ใหม่นี้ กรุณาตรวจสอบอีเมล์และคลิกลิงค์เพื่อยืนยันที่อยู่อีเมล์ใหม่
+      updated: คุณอัปเดตบัญชีของคุณประสบความสำเร็จ
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: เข้าสู่ระบบเรียบร้อยแล้ว
+      signed_out: ออกจากระบบเรียบร้อยแล้ว
     unlocks:
-      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: คุณจะได้รับอีเมล์แนะนำการปลดล็อกบัญชีในไม่ช้า
+      send_paranoid_instructions: หากบัญชีของคุณมีอยู่ในระบบแล้ว คุณจะได้รับอีเมล์แนะนำวิธีการปลดล็อกบัญชีในไม่ช้า
+      unlocked: บัญชีของคุณถูกปลดล็อกเรียบร้อยแล้ว กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
-      not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+      already_confirmed: ยืนยันแล้ว ลองเข้าสู่ระบบ
+      confirmation_period_expired: 
+      expired: หมดอายุแล้ว กรุณาขอใหม่อีกครั้ง
+      not_found: ไม่พบ
+      not_locked: ไม่ถูกล็อก
+      not_saved: ! '%{count} ผิดพลาด %{resource} นี้ถูกห้ามบันทึก:'

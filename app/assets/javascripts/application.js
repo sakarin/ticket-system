@@ -18,3 +18,5 @@
 //= require redactor-rails
 //= require rails.validations.simple_form
 //= require jquery_print_element
+//= require bootstrap-datepicker
+//= require app-assets-javascript-datepicker

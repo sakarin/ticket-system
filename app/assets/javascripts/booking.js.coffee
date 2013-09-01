@@ -1,5 +1,5 @@
 $ ->
-  $("#datetimepicker1").datetimepicker language: "pt-BR"
+  $("#datetimepicker1").datepicker()
 
   $('#booking_customer_price').change ->
     total_price = $('#booking_customer_price').val() *  $('#booking_seat').text()

@@ -37,7 +37,7 @@ describe SourcesController do
   describe "GET index" do
     it "assigns all sources as @sources" do
       source = Source.create! valid_attributes
-      get :index, {}, valid_session
+      get :index2, {}, valid_session
       assigns(:sources).should eq([source])
     end
   end

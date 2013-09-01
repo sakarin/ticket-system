@@ -19,6 +19,9 @@ th:
     delete: "ต้องการลบข้อมูล ?"
   notice:
     delete_confirm: "ต้องการลบข้อมูล ?"
+    booking:
+      complete: คุณได้ทำการจองตั๋วแล้ว.
+      fail: ไม่สามารถทำการจองตั๋วได้
 
   navbar:
     booking: "จำหน่ายตั๋ว"
@@ -66,6 +69,11 @@ th:
         criteria: "เงื่อนไขการค้นหาของคุณไม่ถูกต้อง โปรดลองใช้คำหลักที่ถูกต้อง"
 
 
+  date:
+    datepicker: "mm/dd/yyyy"
+    date_from: "ตั้งแต่วันที่"
+    date_to: "ถึงวันที่"
+    departure: "วันที่เดินทาง"
 
 
 

@@ -5,7 +5,6 @@ class BookingStepsController < ApplicationController
   steps :customer, :summary
 
   def show
-
     render_wizard
   end
 
@@ -23,7 +22,8 @@ class BookingStepsController < ApplicationController
           redirect_to search_bookings_path
         end
       when :summary
-        render_wizard @booking
+        redirect_to_finish_wizard
+
     end
   end
 
@@ -35,7 +35,7 @@ class BookingStepsController < ApplicationController
 
       @route = Route.find(@booking.route_id)
     rescue
-      redirect_to search_bookings_path, alert: "You Can't booking. load_data"
+      redirect_to search_bookings_path, alert: t('notice.booking.fail')
     end
   end
 
@@ -43,6 +43,6 @@ class BookingStepsController < ApplicationController
     session[:booking_id] = {}
     session[:seat] = {}
     session[:route_id] = {}
-    redirect_to root_url, notice: "Thank you for booking."
+    redirect_to root_url, notice: t('notice.booking.complete')
   end
 end

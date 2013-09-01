@@ -37,7 +37,7 @@ describe ContactsController do
   describe "GET index" do
     it "assigns all contacts as @contacts" do
       contact = Contact.create! valid_attributes
-      get :index, {}, valid_session
+      get :index2, {}, valid_session
       assigns(:companies).should eq([contact])
     end
   end

@@ -6,7 +6,7 @@ class DeviseInvitableAddToUsers < ActiveRecord::Migration
       t.datetime   :invitation_accepted_at
       t.integer    :invitation_limit
       t.references :invited_by, :polymorphic => true
-      t.index      :invitation_token # for invitable
+      t.index2      :invitation_token # for invitable
       t.index      :invited_by_id
     end
 

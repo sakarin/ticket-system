@@ -16,11 +16,11 @@ class Report::CompaniesController < ApplicationController
   private
 
   def validate_form
-    if params[:q][:route_departure_at_casted_gteq].blank? || params[:q][:route_departure_at_casted_lteq].blank?
-      flash[:error] = t('errors.messages.invalid.criteria')
-      redirect_to report_companies_path
-      return
-    end
+    #if params[:q][:route_departure_at_casted_gteq].blank? || params[:q][:route_departure_at_casted_lteq].blank?
+    #  flash[:error] = t('errors.messages.invalid.criteria')
+    #  redirect_to report_companies_path
+    #  return
+    #end
 
   end
 

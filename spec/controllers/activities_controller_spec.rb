@@ -37,7 +37,7 @@ describe ActivitiesController do
   describe "GET index" do
     it "assigns all activities as @activities" do
       activity = Activity.create! valid_attributes
-      get :index, {}, valid_session
+      get :index2, {}, valid_session
       assigns(:activities).should eq([activity])
     end
   end

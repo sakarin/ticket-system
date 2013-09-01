@@ -3,8 +3,8 @@
     <div style="text-align: center; font-weight: bold;">
       <p><%= current_user.company.name %> </P>
 
-      <p> วันที่ <%= to_date_short(session[:q][:route_departure_at_casted_gteq]) %>
-        ถึง <%= to_date_short session[:q][:route_departure_at_casted_lteq] %> </p>
+      <p> วันที่ <%#= to_date_short(session[:q][:route_departure_at_casted_gteq]) %>
+        ถึง <%#= to_date_short session[:q][:route_departure_at_casted_lteq] %> </p>
 
     </div>
 
@@ -38,6 +38,7 @@
   </div>
 
   <div class="btn-with-navbar">
-    <%= will_paginate @bookings, :renderer => BootstrapPagination::Rails, :class => "pagination floatright", :previous_label => "&#8592;", :next_label => "&#8594;" %>
+    <%= will_paginate @bookings, :renderer => BootstrapPagination::Rails, :class => "pagination", :previous_label => "&#8592;", :next_label => "&#8594;" %>
   </div>
 </div>
+

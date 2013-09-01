@@ -37,7 +37,7 @@ describe TripsController do
   describe "GET index" do
     it "assigns all trips as @trips" do
       trip = Trip.create! valid_attributes
-      get :index, {}, valid_session
+      get :index2, {}, valid_session
       assigns(:routes).should eq([trip])
     end
   end

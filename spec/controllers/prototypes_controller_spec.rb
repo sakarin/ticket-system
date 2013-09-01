@@ -37,7 +37,7 @@ describe PrototypesController do
   describe "GET index" do
     it "assigns all prototypes as @prototypes" do
       prototype = Prototype.create! valid_attributes
-      get :index, {}, valid_session
+      get :index2, {}, valid_session
       assigns(:prototypes).should eq([prototype])
     end
   end
