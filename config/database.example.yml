@@ -21,8 +21,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: ticket_production
+  database: production
   pool: 5
   host: localhost
-  username: ticket
-  password: ticket2556
+  username: localhost
+  password: localhost
